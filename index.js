@@ -17,7 +17,9 @@ const sortBtn = document.getElementById('sort');
 const countLedsBtn = document.getElementById('count-leds');
 const searchInput = document.getElementById('search');
 
-let data = [];
+let data = [new Lamp('Rpink', 10, 15, 'Promin'),
+            new Lamp('Miwa', 25, 0, 'Brille'),
+            new Lamp('Amor', 50, 5, 'Iskra')];
 
 function updateDOM(providedData = data) {
   main.innerHTML = '<h2>Lamp List</h2>';
@@ -25,7 +27,7 @@ function updateDOM(providedData = data) {
   providedData.forEach(item => {
     const element = document.createElement('div');
     element.classList.add('lamp');
-    element.innerHTML = `<strong>${item.type}</strong> - Power: ${item.power} Watts, LEDs: ${item.leds}, Manufacturer: ${item.manufacturer}`;
+    element.innerHTML = `<strong>${item.type}</strong>: Power = ${item.power} Watts; LEDs = ${item.leds}; Manufacturer = ${item.manufacturer}`;
     main.appendChild(element);
   });
 }
