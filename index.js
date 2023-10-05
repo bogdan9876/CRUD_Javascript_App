@@ -59,7 +59,17 @@ function sortByPower() {
 
 function countLeds() {
   const totalLeds = data.reduce((total, lamp) => total + lamp.leds, 0);
-  alert(`Total LEDs: ${totalLeds}`);
+  const resultElement = document.getElementById('total-leds-result');
+  
+  if (resultElement) {
+    resultElement.textContent = `Total LEDs: ${totalLeds}`;
+  } else {
+    const newElement = document.createElement('p');
+    newElement.id = 'total-leds-result';
+    newElement.textContent = `Total LEDs: ${totalLeds}`;
+    
+    main.appendChild(newElement);
+  }
 }
 
 countLedsBtn.addEventListener('click', countLeds);
