@@ -1,12 +1,3 @@
-class Lamp {
-  constructor(type, power, leds, manufacturer) {
-    this.type = type;
-    this.power = power;
-    this.leds = leds;
-    this.manufacturer = manufacturer;
-  }
-}
-
 const main = document.getElementById('main');
 const lampTypeInput = document.getElementById('lamp-type');
 const lampPowerInput = document.getElementById('lamp-power');
@@ -17,9 +8,11 @@ const sortBtn = document.getElementById('sort');
 const countLedsBtn = document.getElementById('count-leds');
 const searchInput = document.getElementById('search');
 
-let data = [new Lamp('Rpink', 10, 15, 'Promin'),
-            new Lamp('Miwa', 25, 0, 'Brille'),
-            new Lamp('Amor', 50, 5, 'Iskra')];
+let data = [
+  { type: 'Rpink', power: 10, leds: 15, manufacturer: 'Promin' },
+  { type: 'Miwa', power: 25, leds: 0, manufacturer: 'Brille' },
+  { type: 'Amor', power: 50, leds: 5, manufacturer: 'Iskra' }
+];
 
 function updateDOM(providedData = data) {
   main.innerHTML = '<h2>Lamp List</h2>';
@@ -39,7 +32,7 @@ function addLamp() {
   const manufacturer = lampManufacturerInput.value;
 
   if (!isNaN(power) && !isNaN(leds) && type && manufacturer) {
-    const newLamp = new Lamp(type, power, leds, manufacturer);
+    const newLamp = { type, power, leds, manufacturer };
     data.push(newLamp);
     updateDOM();
 
