@@ -46,21 +46,34 @@ function addLamp() {
 }
 
 function sortByPower() {
+  const searchTerm = searchInput.value.toLowerCase();
+
   data.sort((a, b) => a.power - b.power);
-  updateDOM();
+
+  const filteredLamps = data.filter(lamp =>
+    lamp.type.toLowerCase().includes(searchTerm)
+  );
+
+  updateDOM(filteredLamps);
 }
 
+
 function countLeds() {
-  const totalLeds = data.reduce((total, lamp) => total + lamp.leds, 0);
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredLamps = data.filter(lamp =>
+    lamp.type.toLowerCase().includes(searchTerm)
+  );
+
+  const totalLeds = filteredLamps.reduce((total, lamp) => total + lamp.leds, 0);
   const resultElement = document.getElementById('total-leds-result');
-  
+
   if (resultElement) {
     resultElement.textContent = `Total LEDs: ${totalLeds}`;
   } else {
     const newElement = document.createElement('p');
     newElement.id = 'total-leds-result';
     newElement.textContent = `Total LEDs: ${totalLeds}`;
-    
+
     main.appendChild(newElement);
   }
 }
