@@ -1,5 +1,3 @@
-// index.js
-
 const main = document.getElementById('main');
 const lampTypeInput = document.getElementById('lamp-type');
 const lampPowerInput = document.getElementById('lamp-power');
