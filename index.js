@@ -27,7 +27,6 @@ function updateDOM(providedData = data) {
       <button class="edit-button">Edit</button>`;
     main.appendChild(element);
     
-    // Attach editLamp function to the "Edit" button
     const editButton = element.querySelector('.edit-button');
     editButton.addEventListener('click', () => {
       editLamp(element, item);
