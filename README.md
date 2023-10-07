@@ -1,6 +1,9 @@
-# 3.CRUD Javascript App: View Page
-## Using JavaScript, you need to implement the following operations on your data (it is up to you to decide which field should be used for each of the operations): 
-### Sort of your items option
-### Search option 
-### Count total amount of some of the field 
+# 4.CRUD Javascript App: Create/Edit Pages
+
+## In this work, you need to continue working and add two new parts to your website - Create & Edit Pages 
+
+### Also you must validate the forms using HTML attributes (inputs must be configured for your data format).
+If incorrect data is entered in the inputs, you must use JavaScript to inform the user with modal windows or just plain alert() function.
+Bonus points are provided for this work, if you implement a styled modal window that will work with JavaScript.
+
 
