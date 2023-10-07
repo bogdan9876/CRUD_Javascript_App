@@ -1,3 +1,5 @@
+// index.js
+
 const main = document.getElementById('main');
 const lampTypeInput = document.getElementById('lamp-type');
 const lampPowerInput = document.getElementById('lamp-power');
@@ -20,8 +22,16 @@ function updateDOM(providedData = data) {
   providedData.forEach(item => {
     const element = document.createElement('div');
     element.classList.add('lamp');
-    element.innerHTML = `<strong>${item.type}</strong>: Power = ${item.power} Watts; LEDs = ${item.leds}; Manufacturer = ${item.manufacturer}`;
+    element.innerHTML = `
+      <strong>${item.type}</strong>: Power = ${item.power} Watts; LEDs = ${item.leds}; Manufacturer = ${item.manufacturer}
+      <button class="edit-button">Edit</button>`;
     main.appendChild(element);
+    
+    // Attach editLamp function to the "Edit" button
+    const editButton = element.querySelector('.edit-button');
+    editButton.addEventListener('click', () => {
+      editLamp(element, item);
+    });
   });
 }
 
@@ -57,7 +67,6 @@ function sortByPower() {
   updateDOM(filteredLamps);
 }
 
-
 function countLeds() {
   const searchTerm = searchInput.value.toLowerCase();
   const filteredLamps = data.filter(lamp =>
@@ -86,6 +95,72 @@ function searchLamp() {
     lamp.type.toLowerCase().includes(searchTerm)
   );
   updateDOM(filteredLamps);
+}
+
+function editLamp(lampElement, lampData, fieldToEdit) {
+  const typeLabel = document.createElement('label');
+  typeLabel.textContent = 'Type: ';
+  
+  const powerLabel = document.createElement('label');
+  powerLabel.textContent = 'Power (Watts): ';
+  
+  const ledsLabel = document.createElement('label');
+  ledsLabel.textContent = 'Number of LEDs: ';
+  
+  const manufacturerLabel = document.createElement('label');
+  manufacturerLabel.textContent = 'Manufacturer: ';
+
+  const editTypeInput = document.createElement('input');
+  editTypeInput.type = 'text';
+  editTypeInput.value = lampData.type;
+
+  const editPowerInput = document.createElement('input');
+  editPowerInput.type = 'number';
+  editPowerInput.value = lampData.power;
+  editPowerInput.min = 0;
+
+  const editLedsInput = document.createElement('input');
+  editLedsInput.type = 'number';
+  editLedsInput.value = lampData.leds;
+  editLedsInput.min = 0;
+
+  const editManufacturerInput = document.createElement('input');
+  editManufacturerInput.type = 'text';
+  editManufacturerInput.value = lampData.manufacturer;
+
+  const saveButton = document.createElement('button');
+  saveButton.textContent = 'Save';
+
+  lampElement.innerHTML = '';
+  lampElement.appendChild(typeLabel);
+  lampElement.appendChild(editTypeInput);
+  lampElement.appendChild(document.createElement('br'));
+  lampElement.appendChild(powerLabel);
+  lampElement.appendChild(editPowerInput);
+  lampElement.appendChild(document.createElement('br'));
+  lampElement.appendChild(ledsLabel);
+  lampElement.appendChild(editLedsInput);
+  lampElement.appendChild(document.createElement('br'));
+  lampElement.appendChild(manufacturerLabel);
+  lampElement.appendChild(editManufacturerInput);
+  lampElement.appendChild(document.createElement('br'));
+  lampElement.appendChild(saveButton);
+
+  saveButton.addEventListener('click', () => {
+    const updatedType = editTypeInput.value;
+    const updatedPower = parseFloat(editPowerInput.value);
+    const updatedLeds = parseInt(editLedsInput.value);
+    const updatedManufacturer = editManufacturerInput.value;
+
+    lampData.type = updatedType;
+    lampData.power = updatedPower;
+    lampData.leds = updatedLeds;
+    lampData.manufacturer = updatedManufacturer;
+
+    updateDOM();
+  });
+
+  fieldToEdit.textContent = `Editing: ${fieldToEdit.id}`;
 }
 
 addLampBtn.addEventListener('click', addLamp);
