@@ -8,13 +8,13 @@ const sortBtn = document.getElementById('sort');
 const countLedsBtn = document.getElementById('count-leds');
 const searchInput = document.getElementById('search');
 
-let data = [
+let information = [
   { type: 'Rpink', power: 10, leds: 15, manufacturer: 'Promin' },
   { type: 'Miwa', power: 25, leds: 0, manufacturer: 'Brille' },
   { type: 'Amor', power: 50, leds: 5, manufacturer: 'Iskra' }
 ];
 
-function updateDOM(providedData = data) {
+function updateDOM(providedData = information) {
   main.innerHTML = '<h2>Lamp List</h2>';
 
   providedData.forEach(item => {
@@ -40,7 +40,7 @@ function addLamp() {
 
   if (!isNaN(power) && !isNaN(leds) && type && manufacturer) {
     const newLamp = { type, power, leds, manufacturer };
-    data.push(newLamp);
+    information.push(newLamp);
     updateDOM();
 
     lampTypeInput.value = '';
@@ -55,9 +55,9 @@ function addLamp() {
 function sortByPower() {
   const searchTerm = searchInput.value.toLowerCase();
 
-  data.sort((a, b) => a.power - b.power);
+  information.sort((a, b) => a.power - b.power);
 
-  const filteredLamps = data.filter(lamp =>
+  const filteredLamps = information.filter(lamp =>
     lamp.type.toLowerCase().includes(searchTerm)
   );
 
@@ -66,7 +66,7 @@ function sortByPower() {
 
 function countLeds() {
   const searchTerm = searchInput.value.toLowerCase();
-  const filteredLamps = data.filter(lamp =>
+  const filteredLamps = information.filter(lamp =>
     lamp.type.toLowerCase().includes(searchTerm)
   );
 
@@ -88,7 +88,7 @@ countLedsBtn.addEventListener('click', countLeds);
 
 function searchLamp() {
   const searchTerm = searchInput.value.toLowerCase();
-  const filteredLamps = data.filter(lamp =>
+  const filteredLamps = information.filter(lamp =>
     lamp.type.toLowerCase().includes(searchTerm)
   );
   updateDOM(filteredLamps);
@@ -149,6 +149,16 @@ function editLamp(lampElement, lampData, fieldToEdit) {
     const updatedLeds = parseInt(editLedsInput.value);
     const updatedManufacturer = editManufacturerInput.value;
 
+    if (updatedType === '' || isNaN(updatedPower) || isNaN(updatedLeds) || updatedManufacturer === '') {
+      alert('Enter all fields');
+      return;
+    }
+
+    if (updatedPower < 0 || updatedLeds < 0) {
+      alert('Power and LEDs cannot be less than 0');
+      return;
+    }
+
     lampData.type = updatedType;
     lampData.power = updatedPower;
     lampData.leds = updatedLeds;
@@ -157,7 +167,9 @@ function editLamp(lampElement, lampData, fieldToEdit) {
     updateDOM();
   });
 
-  fieldToEdit.textContent = `Editing: ${fieldToEdit.id}`;
+  if (fieldToEdit) {
+    fieldToEdit.textContent = `Editing: ${fieldToEdit.id}`;
+  }
 }
 
 addLampBtn.addEventListener('click', addLamp);
