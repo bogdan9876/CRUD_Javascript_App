@@ -8,20 +8,27 @@ const sortBtn = document.getElementById('sort');
 const countLedsBtn = document.getElementById('count-leds');
 const searchInput = document.getElementById('search');
 
-let data = [
+let information = [
   { type: 'Rpink', power: 10, leds: 15, manufacturer: 'Promin' },
   { type: 'Miwa', power: 25, leds: 0, manufacturer: 'Brille' },
   { type: 'Amor', power: 50, leds: 5, manufacturer: 'Iskra' }
 ];
 
-function updateDOM(providedData = data) {
+function updateDOM(providedData = information) {
   main.innerHTML = '<h2>Lamp List</h2>';
 
   providedData.forEach(item => {
     const element = document.createElement('div');
     element.classList.add('lamp');
-    element.innerHTML = `<strong>${item.type}</strong>: Power = ${item.power} Watts; LEDs = ${item.leds}; Manufacturer = ${item.manufacturer}`;
+    element.innerHTML = `
+      <strong>${item.type}</strong>: Power = ${item.power} Watts; LEDs = ${item.leds}; Manufacturer = ${item.manufacturer}
+      <button class="edit-button">Edit</button>`;
     main.appendChild(element);
+    
+    const editButton = element.querySelector('.edit-button');
+    editButton.addEventListener('click', () => {
+      editLamp(element, item);
+    });
   });
 }
 
@@ -33,7 +40,7 @@ function addLamp() {
 
   if (!isNaN(power) && !isNaN(leds) && type && manufacturer) {
     const newLamp = { type, power, leds, manufacturer };
-    data.push(newLamp);
+    information.push(newLamp);
     updateDOM();
 
     lampTypeInput.value = '';
@@ -48,19 +55,18 @@ function addLamp() {
 function sortByPower() {
   const searchTerm = searchInput.value.toLowerCase();
 
-  data.sort((a, b) => a.power - b.power);
+  information.sort((a, b) => a.power - b.power);
 
-  const filteredLamps = data.filter(lamp =>
+  const filteredLamps = information.filter(lamp =>
     lamp.type.toLowerCase().includes(searchTerm)
   );
 
   updateDOM(filteredLamps);
 }
 
-
 function countLeds() {
   const searchTerm = searchInput.value.toLowerCase();
-  const filteredLamps = data.filter(lamp =>
+  const filteredLamps = information.filter(lamp =>
     lamp.type.toLowerCase().includes(searchTerm)
   );
 
@@ -82,10 +88,88 @@ countLedsBtn.addEventListener('click', countLeds);
 
 function searchLamp() {
   const searchTerm = searchInput.value.toLowerCase();
-  const filteredLamps = data.filter(lamp =>
+  const filteredLamps = information.filter(lamp =>
     lamp.type.toLowerCase().includes(searchTerm)
   );
   updateDOM(filteredLamps);
+}
+
+function editLamp(lampElement, lampData, fieldToEdit) {
+  const typeLabel = document.createElement('label');
+  typeLabel.textContent = 'Type: ';
+  
+  const powerLabel = document.createElement('label');
+  powerLabel.textContent = 'Power (Watts): ';
+  
+  const ledsLabel = document.createElement('label');
+  ledsLabel.textContent = 'Number of LEDs: ';
+  
+  const manufacturerLabel = document.createElement('label');
+  manufacturerLabel.textContent = 'Manufacturer: ';
+
+  const editTypeInput = document.createElement('input');
+  editTypeInput.type = 'text';
+  editTypeInput.value = lampData.type;
+
+  const editPowerInput = document.createElement('input');
+  editPowerInput.type = 'number';
+  editPowerInput.value = lampData.power;
+  editPowerInput.min = 0;
+
+  const editLedsInput = document.createElement('input');
+  editLedsInput.type = 'number';
+  editLedsInput.value = lampData.leds;
+  editLedsInput.min = 0;
+
+  const editManufacturerInput = document.createElement('input');
+  editManufacturerInput.type = 'text';
+  editManufacturerInput.value = lampData.manufacturer;
+
+  const saveButton = document.createElement('button');
+  saveButton.textContent = 'Save';
+
+  lampElement.innerHTML = '';
+  lampElement.appendChild(typeLabel);
+  lampElement.appendChild(editTypeInput);
+  lampElement.appendChild(document.createElement('br'));
+  lampElement.appendChild(powerLabel);
+  lampElement.appendChild(editPowerInput);
+  lampElement.appendChild(document.createElement('br'));
+  lampElement.appendChild(ledsLabel);
+  lampElement.appendChild(editLedsInput);
+  lampElement.appendChild(document.createElement('br'));
+  lampElement.appendChild(manufacturerLabel);
+  lampElement.appendChild(editManufacturerInput);
+  lampElement.appendChild(document.createElement('br'));
+  lampElement.appendChild(saveButton);
+
+  saveButton.addEventListener('click', () => {
+    const updatedType = editTypeInput.value;
+    const updatedPower = parseFloat(editPowerInput.value);
+    const updatedLeds = parseInt(editLedsInput.value);
+    const updatedManufacturer = editManufacturerInput.value;
+
+    if (updatedType === '' || isNaN(updatedPower) || isNaN(updatedLeds) || updatedManufacturer === '') {
+      alert('Enter all fields');
+      return;
+    }
+
+    if (updatedPower < 0 || updatedLeds < 0) {
+      alert('Power and LEDs cannot be less than 0');
+      return;
+    }
+
+    lampData.type = updatedType;
+    lampData.power = updatedPower;
+    lampData.leds = updatedLeds;
+    lampData.manufacturer = updatedManufacturer;
+
+    updateDOM();
+  });
+
+  if (fieldToEdit) {
+    fieldToEdit.textContent = `Editing: ${fieldToEdit.id}`;
+  }
 }
 
 addLampBtn.addEventListener('click', addLamp);
