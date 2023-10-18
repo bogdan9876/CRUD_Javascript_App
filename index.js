@@ -186,7 +186,7 @@ function deleteLamp() {
   if (lampId === null) return; 
   const parsedLampId = parseInt(lampId);
   if (!isNaN(parsedLampId)) {
-    fetch(`/api/lamps/${parsedLampId}`, {
+    fetch(`/lamps/${parsedLampId}`, {
       method: 'DELETE',
     })
       .then((response) => response.text())
