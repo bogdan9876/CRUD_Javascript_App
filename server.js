@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
 const port = 3333;
 
@@ -12,28 +13,34 @@ let lamps = [
   { id: 3, type: 'Amor', power: 50, leds: 5, manufacturer: 'Iskra' }
 ];
 
-app.post('/api/lamps', (req, res) => {
+app.use(express.static(path.join(__dirname)));
+
+app.post('/lamps', (req, res) => {
   const newLamp = req.body;
   newLamp.id = lamps.length + 1;
   lamps.push(newLamp);
   res.json(newLamp);
 });
 
-app.get('/api/lamps', (req, res) => {
+app.get('/lamps', (req, res) => {
   res.json(lamps);
 });
 
-app.put('/api/lamps/:id', (req, res) => {
+app.put('/lamps/:id', (req, res) => {
   const lampId = parseInt(req.params.id);
   const updatedLamp = req.body;
   lamps = lamps.map(lamp => (lamp.id === lampId ? updatedLamp : lamp));
   res.send(`Lamp with ID ${lampId} updated`);
 });
 
-app.delete('/api/lamps/:id', (req, res) => {
+app.delete('/lamps/:id', (req, res) => {
   const lampId = parseInt(req.params.id);
   lamps = lamps.filter(lamp => lamp.id !== lampId);
   res.send(`Lamp with ID ${lampId} deleted`);
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => {
