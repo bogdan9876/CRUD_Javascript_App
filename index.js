@@ -7,6 +7,7 @@ const addLampBtn = document.getElementById('add-lamp');
 const sortBtn = document.getElementById('sort');
 const countLedsBtn = document.getElementById('count-leds');
 const searchInput = document.getElementById('search');
+const deleteLampBtn = document.getElementById('delete-lamp');
 
 let information = [
   { type: 'Rpink', power: 10, leds: 15, manufacturer: 'Promin' },
@@ -177,3 +178,27 @@ sortBtn.addEventListener('click', sortByPower);
 searchInput.addEventListener('input', searchLamp);
 
 updateDOM();
+
+deleteLampBtn.addEventListener('click', deleteLamp);
+
+function deleteLamp() {
+  const lampId = prompt('Enter the ID of the lamp to delete:');
+  if (lampId === null) return; 
+  const parsedLampId = parseInt(lampId);
+  if (!isNaN(parsedLampId)) {
+    fetch(`/api/lamps/${parsedLampId}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.text())
+      .then((message) => {
+        alert(message);
+        updateDOM();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Failed to delete lamp.');
+      });
+  } else {
+    alert('Invalid input. Please enter a valid lamp ID.');
+  }
+}
