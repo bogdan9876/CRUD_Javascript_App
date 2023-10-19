@@ -9,11 +9,7 @@ const countLedsBtn = document.getElementById('count-leds');
 const searchInput = document.getElementById('search');
 const deleteLampBtn = document.getElementById('delete-lamp');
 
-let information = [
-  { type: 'Rpink', power: 10, leds: 15, manufacturer: 'Promin' },
-  { type: 'Miwa', power: 25, leds: 0, manufacturer: 'Brille' },
-  { type: 'Amor', power: 50, leds: 5, manufacturer: 'Iskra' }
-];
+let information = [];
 
 function updateDOM(providedData = information) {
   main.innerHTML = '<h2>Lamp List</h2>';
@@ -23,15 +19,22 @@ function updateDOM(providedData = information) {
     element.classList.add('lamp');
     element.innerHTML = `
       <strong>${item.type}</strong>: Power = ${item.power} Watts; LEDs = ${item.leds}; Manufacturer = ${item.manufacturer}
-      <button class="edit-button">Edit</button>`;
+      <button class="edit-button">Edit</button>
+      <button class="delete-button">Delete</button>`;
     main.appendChild(element);
     
     const editButton = element.querySelector('.edit-button');
     editButton.addEventListener('click', () => {
       editLamp(element, item);
     });
+    
+    const deleteButton = element.querySelector('.delete-button');
+    deleteButton.addEventListener('click', () => {
+      deleteLamp(item.id);
+    });    
   });
 }
+
 
 function addLamp() {
   const type = lampTypeInput.value;
@@ -181,24 +184,18 @@ updateDOM();
 
 deleteLampBtn.addEventListener('click', deleteLamp);
 
-function deleteLamp() {
-  const lampId = prompt('Enter the ID of the lamp to delete:');
-  if (lampId === null) return; 
-  const parsedLampId = parseInt(lampId);
-  if (!isNaN(parsedLampId)) {
-    fetch(`/lamps/${parsedLampId}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.text())
-      .then((message) => {
-        alert(message);
-        updateDOM();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        alert('Failed to delete lamp.');
-      });
-  } else {
-    alert('Invalid input. Please enter a valid lamp ID.');
+function deleteLamp(id) {
+  const lampData = information.find(item => item.id === id);
+
+  if (!lampData) {
+    alert('Lamp not found for deletion.');
+    return;
+  }
+
+  const confirmDelete = confirm(`Are you sure you want to delete the ${lampData.type} lamp?`);
+  
+  if (confirmDelete) {
+    information = information.filter(item => item.id !== id);
+    updateDOM();
   }
 }
