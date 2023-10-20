@@ -1,1 +1,19 @@
-node_modules
+
+# Maven
+target/
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+*.iws
+out/
+.gen/
+.idea_modules/
+.gradle/
+
+# Spring Boot
+log/
+logs/
+build/
