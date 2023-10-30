@@ -1,0 +1,58 @@
+.section1__image {
+    width: 659px;
+    height: 534px;
+}
+
+.section1__image-wrapper {
+    margin-left: 50px;
+    display: inline-block;
+}
+
+.section1 {
+    background-color: #F8F8F8;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.section1__paragraph {
+    width: 481px;
+    height: 333px;
+    text-align: left;
+    padding-left: 102px;
+    padding-top: 96px;
+}
+
+.section1__paragraph_title {
+    width: 481px;
+    height: 100px;
+    font-weight: 700;
+    font-size: 36px;
+    font-family: "Playfair Display", sans-serif;
+}
+
+.section1__paragraph_main {
+    width: 450px;
+    height: 120px;
+    font-weight: 300;
+    font-size: 17px;
+    font-family: "Mulish", sans-serif;
+    color: #7D7987;
+}
+
+.section1__content-wrapper {
+    display: flex;
+}
+
+.section1__learn-more-button {
+    background-color: #FB8F1D;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 164px;
+    height: 48px;
+    font-family: "Inter", sans-serif;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

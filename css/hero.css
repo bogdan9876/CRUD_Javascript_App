@@ -1,0 +1,104 @@
+.hero-banner__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 134px;
+    padding-top: 29px;
+    padding-bottom: 175px;
+}
+
+.hero-banner__text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 74px;
+}
+
+.hero-banner__title-wrapper {
+    width: 356px;
+    color: #202336;
+    font-family: "Playfair Display", sans-serif;
+}
+
+.hero-banner__title {
+    font-weight: 700;
+    font-size: 64px;
+}
+
+.hero-banner__form {
+    display: grid;
+    width: 471px;
+    grid-template-columns: calc(50% - 15px) calc(50% - 15px);
+    gap: 30px;
+}
+
+.hero-banner__finder-input {
+    position: relative;
+    width: 100%;
+}
+
+.hero-banner__finder-select {
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #AFB0B9;
+    padding-right: 40px;
+    padding-left: 31px;
+    height: 52px;
+    width: 100%;
+    background-color: #FFFFFF;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #4A4C53;
+    line-height: 52px;
+    -webkit-appearance: none;
+}
+
+.hero-banner__finder-input__arrow {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    width: 6px;
+    height: 6px;
+    border-bottom: 2px solid #202336;
+    border-left: 2px solid #202336;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.hero-banner__finder-title {
+    font-weight: 600;
+    font-size: 22px;
+    font-family: "Inter", sans-serif;
+}
+
+.hero-banner__finder {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.dash {
+    width: 32px;
+    height: 2px;
+    border-radius: 4px;
+    background-color: #202336;
+    margin-top: 21px;
+}
+
+.hero-banner__explore-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    width: 180px;
+    height: 52px;
+    background-color: #FB8F1D;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 17px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Mulish", sans-serif;
+}
