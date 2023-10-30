@@ -1,6 +1,28 @@
-# 5. CRUD Javascript App: Backend
+# Лабораторні роботи з дисципліни "Веб технології та веб дизайн"
 
-## Description: In the last part of working on the website you have to implement all Create/Read/Update/Delete operations which must be made via the corresponding HTTP methods in your REST API.
+## Виконав: Кривейко Богдан Юрійович (Група ІР-21)
 
+### Лабораторна робота №1 (Варіант 2)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab1)
 
+***
+### Лабораторна робота №2 (Варіант 2)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab2)
 
+***
+### Лабораторна робота №3 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab3)
+
+***
+### Лабораторна робота №4 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab4)
+
+***
+### Лабораторна робота №5 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab5)
+
+***
+### Лабораторна робота №6 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab6)
+
+***
