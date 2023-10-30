@@ -1,21 +1,29 @@
 .section1 {
     display: flex;
+    justify-content: space-between;
     margin-bottom: 100px;
 }
 
 .section1-image {
-    margin-left: 250px;
-    margin-right: 40px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.section1-text {
+    flex: 1;
+    margin-left: 50px;
 }
 
 .section1-text-title {
-    margin-top: 20px;
     font-size: 35px;
+    margin-top: 0;
     margin-bottom: 15px;
+    color: #333;
 }
 
-.section1-text-pharagraph {
-    width: 600px;
-    font-size: 18px;
+.section1-text-paragraph {
+    font-size: 28px;
     color: #7A7A7A;
+    margin-top: 50px;
+    margin-right: 30px;
 }

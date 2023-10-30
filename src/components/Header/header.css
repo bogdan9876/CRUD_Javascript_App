@@ -20,20 +20,20 @@
 
 .header__nav-pages {
     display: flex;
-    margin-right: 100px; /* Зменшуємо відступ */
+    margin-right: 100px;
 }
 
 .header__page {
-    margin-right: 50px; /* Зменшуємо відступ */
+    margin-right: 50px;
     border: 2px solid transparent;
-    padding: 10px 30px; /* Збільшуємо розмір кнопки */
+    padding: 10px 30px;
     border-radius: 10px;
     font-size: 20px;
 }
 
 .header__page a {
-    text-decoration: none; /* Видаляємо нижнє підкреслення */
-    color: inherit; /* Забезпечуємо спадкування кольору тексту */
+    text-decoration: none;
+    color: inherit;
 }
 
 .header__page:hover {
