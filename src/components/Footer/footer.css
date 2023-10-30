@@ -1,5 +1,6 @@
 .footer {
     background-color: #303636;
+    color: white;
 }
 
 .footer__main {
@@ -9,47 +10,38 @@
 
 .footer__logos1 {
     margin: 0 15px;
-    width: 40px ;
+    width: 40px;
     height: 40px;
 }
 
 .footer__logos {
-    margin-top: 45px;
-    margin-right: 20px;
+    margin: 45px 20px 0 0;
 }
 
 .footer__logo {
-    margin-top: 35px;
-    margin-right: 100px;
+    margin: 35px 100px 0 0;
 }
 
 .footer__text-title {
-    margin-left: 30px;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin: 30px 0 20px 30px;
     font-size: 30px;
-    color: white;
 }
 
 .footer__text-pharahraph {
     width: 350px;
-    margin-left: 30px;
+    margin: 0 0 50px 30px;
     font-size: 16px;
-    color: white;
-    margin-bottom: 50px;
 }
 
 .footer__bottom-line {
-    width: 96%;
+    width: 97%;
     height: 1px;
     background-color: white;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
 }
 
 .footer__bottom-copyrights {
     text-align: center;
     height: 40px;
-    color: white;
     font-size: 18px;
 }
