@@ -6,6 +6,8 @@
 
 .section1-image {
     margin: 0 30px;
+    border-radius: 20%;
+    border: 3px solid black;
 }
 
 .section1-text {
@@ -22,5 +24,5 @@
 .section1-text-paragraph {
     font-size: 28px;
     color: #7A7A7A;
-    margin: 50px 30px 0 0;
+    margin: 30px 30px 0 0;
 }
