@@ -7,9 +7,9 @@ function Header() {
                         <img src="logos/logo.png" alt="logo" width="70" height="70" />
                     </div>
                     <div className="header__nav-pages">
-                        <h2><button type="button" className="header__page"><a href="#">Home</a></button></h2>
-                        <h2><button type="button" className="header__page"><a href="#">Catalog</a></button></h2>
-                        <h2><button type="button" className="header__page"><a href="#">Cart</a></button></h2>
+                        <button type="button" className="header__page"><a href="#">Home</a></button>
+                        <button type="button" className="header__page"><a href="#">Catalog</a></button>
+                        <button type="button" className="header__page"><a href="#">Cart</a></button>
                     </div>
                 </nav>
             </div>

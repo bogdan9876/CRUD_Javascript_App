@@ -3,9 +3,8 @@ function Footer() {
         <footer className="footer">
             <div className="footer__main">
                 <div className="footer__text">
-                    <h4 className="footer__text-title">Branding stuff</h4>
-                    <p className="footer__text-pharahraph">If you want to make the search for a new table easier,
-                        come to us!
+                    <h4 className="footer__text-title">Lamps store</h4>
+                    <p className="footer__text-pharahraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit
                     </p>
                 </div>
                 <div className="footer__logo">

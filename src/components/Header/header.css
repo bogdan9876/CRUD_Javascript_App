@@ -16,22 +16,26 @@
 
 .header__nav-logo img {
     background: none;
-  }
+}
 
 .header__nav-pages {
     display: flex;
-    margin-right: 200px;
+    margin-right: 100px; /* Зменшуємо відступ */
 }
 
 .header__page {
-    margin-right: 190px;
+    margin-right: 50px; /* Зменшуємо відступ */
     border: 2px solid transparent;
-    padding: 5px 20px;
+    padding: 10px 30px; /* Збільшуємо розмір кнопки */
     border-radius: 10px;
     font-size: 20px;
+}
+
+.header__page a {
+    text-decoration: none; /* Видаляємо нижнє підкреслення */
+    color: inherit; /* Забезпечуємо спадкування кольору тексту */
 }
 
 .header__page:hover {
     border-color: #82BBB5;
 }
-
