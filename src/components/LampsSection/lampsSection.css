@@ -4,15 +4,14 @@
   margin: 0 30px;
 }
 
-.section2-column1,
-.section2-column2,
-.section2-column3 {
+.section2-column {
   text-align: center;
   padding: 20px;
 }
 
 .section2-image {
   margin-bottom: 20px;
+  object-fit: contain;
 }
 
 .section2-text-title {
@@ -26,9 +25,7 @@
   font-size: 18px;
 }
 
-.section2-column1:hover,
-.section2-column2:hover,
-.section2-column3:hover {
+.section2-column:hover {
   background-color: #f5f5f5;
   transition: background-color 0.3s ease;
 }
