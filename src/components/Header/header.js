@@ -1,3 +1,6 @@
+import './header.css';
+import { NavLink } from 'react-router-dom';
+
 function Header() {
     return (
         <header className="header">
@@ -7,19 +10,18 @@ function Header() {
                 </div>
                 <div className="header__nav-pages">
                     <button type="button" className="header__page">
-                        <a href="#">Home</a>
+                        <NavLink exact to="/">Home</NavLink>
                     </button>
                     <button type="button" className="header__page">
-                        <a href="#">Catalog</a>
+                        <NavLink to="/catalog">Catalog</NavLink>
                     </button>
                     <button type="button" className="header__page">
-                        <a href="#">Cart</a>
+                        <NavLink to="/cart">Cart</NavLink>
                     </button>
                 </div>
             </div>
         </header>
     );
 }
-
 
 export default Header;
