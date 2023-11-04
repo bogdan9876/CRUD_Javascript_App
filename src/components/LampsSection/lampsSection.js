@@ -20,12 +20,12 @@ function LampsSection() {
       {
         image: "images/section2(4).jpg",
         title: "Lamp4",
-        description: "Your description for Lamp4."
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget est lorem ipsum dolor sit."
       }
     ];
   
     return (
-      <div className="section2">
+      <div className="lamp-section">
         {items.map((item, index) => (
           <LampItem item={item} key={index} />
         ))}
