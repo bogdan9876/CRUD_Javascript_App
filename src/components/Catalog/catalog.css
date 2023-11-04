@@ -1,0 +1,33 @@
+.catalog {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.lamp {
+  margin: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.lamp img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.lamp h3 {
+  margin: 10px 0;
+  color: #333333;
+  font-size: 18px;
+}
+
+.lamp p {
+  color: #666666;
+  font-size: 16px;
+}
