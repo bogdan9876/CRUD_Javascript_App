@@ -19,15 +19,16 @@
 
 .header__nav-pages {
     display: flex;
-    margin-right: 100px;
+    margin-left: 200px;
 }
 
 .header__page {
-    margin-right: 50px;
+    margin-right: 100px;
     border: 2px solid transparent;
     padding: 10px 30px;
     border-radius: 10px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .header__page a {
@@ -37,4 +38,15 @@
 
 .header__page:hover {
     border-color: #82BBB5;
+}
+
+.header__search {
+    width: 200px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    margin-right: 35px;
+    outline: 1px solid #82BBB5;
 }

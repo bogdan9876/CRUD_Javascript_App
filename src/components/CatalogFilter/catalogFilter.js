@@ -6,17 +6,17 @@ const CatalogFilter = () => {
     <div className="wrapper">
       <div className="inner">
         <select className="selectSort" name="sort">
-          <option style={{ display: 'none' }}>Choose option</option>
+          <option>Choose option</option>
           <option value="sortByPrice">Sort by price</option>
           <option value="sortByTitle">Sort by title</option>
           <option value="sortByType">Sort by type</option>
         </select>
         <div>
           <label className="myLabel">
-            Minimum price <input type="number" name="minPrice" />
+            Lamp ID <input type="number" name="LampID" />
           </label>
           <label className="myLabel">
-            Maximum price <input type="number" name="maxPrice" />
+            Lamp Price <input type="number" name="LampPrice" />
           </label>
         </div>
         <button className="myButton">

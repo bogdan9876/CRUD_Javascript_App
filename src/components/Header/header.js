@@ -9,16 +9,23 @@ function Header() {
                     <img src="logos/logo.png" alt="logo" width="70" height="70" />
                 </div>
                 <div className="header__nav-pages">
-                    <button type="button" className="header__page">
-                        <NavLink exact to="/">Home</NavLink>
-                    </button>
-                    <button type="button" className="header__page">
-                        <NavLink to="/catalog">Catalog</NavLink>
-                    </button>
-                    <button type="button" className="header__page">
-                        <NavLink to="/cart">Cart</NavLink>
-                    </button>
+                    <NavLink exact to="/">
+                        <button type="button" className="header__page">
+                            Home
+                        </button>
+                    </NavLink>
+                    <NavLink to="/catalog">
+                        <button type="button" className="header__page">
+                            Catalog
+                        </button>
+                    </NavLink>
+                    <NavLink to="/cart">
+                        <button type="button" className="header__page">
+                            Cart
+                        </button>
+                    </NavLink>
                 </div>
+                <input type="search" className="header__search" placeholder="Search" />
             </div>
         </header>
     );
