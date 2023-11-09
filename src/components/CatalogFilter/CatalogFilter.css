@@ -1,0 +1,47 @@
+.wrapper {
+  border-radius: 12px;
+  max-width: 97%;
+}
+
+.inner {
+  display: flex;
+  margin: 1.4vw 0;
+}
+
+.selectSort {
+  width: 200px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.myLabel {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.myLabel input {
+  margin-top: 5px;
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.myButton {
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.myButton span {
+  font-size: 14px;
+}
