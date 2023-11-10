@@ -5,7 +5,7 @@ import Header from './components/Header/header';
 import Footer from './components/Footer/footer';
 import Home from './components/Home/home';
 import Catalog from './components/Catalog/catalog';
-import LampDetail from './components/Catalog/LampDetail';
+import LampDetail from './components/LampDetail/lampDetail';
 
 function App() {
   return (

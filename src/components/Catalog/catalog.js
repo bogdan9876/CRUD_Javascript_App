@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './catalog.css';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
-import lamps from './lampData';
+import lamps from '../LampData/lampData';
 
 
 function Catalog() {

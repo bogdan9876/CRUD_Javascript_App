@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import lamps from './lampData';
+import lamps from '../LampData/lampData';
 
 function LampDetail() {
   const { id } = useParams();
