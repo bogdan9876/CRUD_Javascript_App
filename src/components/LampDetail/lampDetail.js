@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import lamps from '../LampData/lampData';
+import './lampDetail.css';
 
 function LampDetail() {
   const { id } = useParams();
@@ -11,11 +12,11 @@ function LampDetail() {
   }
 
   return (
-    <div>
+    <div className="lamp-detail">
       <img src={lamp.image} alt={lamp.title} width="300" height="250"/>
       <h3>{lamp.title}</h3>
       <p>{lamp.description}</p>
-      <p><span style={{ fontWeight: 'bold' }}>Price:</span> {lamp.price} uah</p>
+      <p className="price">Price: {lamp.price} uah</p>
     </div>
   );
 }

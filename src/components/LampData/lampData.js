@@ -16,7 +16,7 @@ const lamps = [
     },
     {
       id: 3,
-      image: "images/section2(2).jpg",
+      image: "images/section2(3).jpg",
       title: "Lamp3",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       price: 500
