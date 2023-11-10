@@ -13,7 +13,7 @@ function LampDetail() {
 
   return (
     <div className="lamp-detail">
-      <img src={lamp.image} alt={lamp.title} width="300" height="250"/>
+      <img src={process.env.PUBLIC_URL + '/' + lamp.image} alt={lamp.title} width="300" height="250"/>
       <h3>{lamp.title}</h3>
       <p>{lamp.description}</p>
       <p className="price">Price: {lamp.price} uah</p>
