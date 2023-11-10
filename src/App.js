@@ -5,6 +5,7 @@ import Header from './components/Header/header';
 import Footer from './components/Footer/footer';
 import Home from './components/Home/home';
 import Catalog from './components/Catalog/catalog';
+import LampDetail from './components/Catalog/LampDetail';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} /> 
+        <Route path="/lamp/:id" element={<LampDetail />} />
       </Routes>
       <Footer />
     </Router>

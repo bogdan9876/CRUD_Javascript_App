@@ -3,33 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './catalog.css';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
+import lamps from './lampData';
 
-const lamps = [
-  {
-    id: 1,
-    image: "images/section2(1).jpg",
-    title: "Лампа 1",
-    description: "Це опис першої лампи."
-  },
-  {
-    id: 2,
-    image: "images/section2(2).jpg",
-    title: "Лампа 2",
-    description: "Це опис другої лампи."
-  },
-  {
-    id: 3,
-    image: "images/section2(2).jpg",
-    title: "Лампа 3",
-    description: "Це опис третьої лампи."
-  },
-  {
-    id: 4,
-    image: "images/section2(1).jpg",
-    title: "Лампа 4",
-    description: "Це опис четвертої лампи."
-  }
-];
 
 function Catalog() {
   return (
