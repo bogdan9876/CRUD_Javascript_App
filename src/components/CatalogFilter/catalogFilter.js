@@ -1,23 +1,22 @@
 import React from 'react';
 import './CatalogFilter.css';
+import SelectSort from './selectSort';
+import LampInput from './lampInput';
+
+const options = [
+  { value: 'sortByPrice', label: 'Sort by price' },
+  { value: 'sortByTitle', label: 'Sort by title' },
+  { value: 'sortByType', label: 'Sort by type' },
+];
 
 const CatalogFilter = () => {
   return (
     <div className="wrapper">
       <div className="inner">
-        <select className="selectSort" name="sort">
-          <option>Choose option</option>
-          <option value="sortByPrice">Sort by price</option>
-          <option value="sortByTitle">Sort by title</option>
-          <option value="sortByType">Sort by type</option>
-        </select>
+        <SelectSort name="sort" options={options} />
         <div>
-          <label className="myLabel">
-            Lamp ID <input type="number" name="LampID" />
-          </label>
-          <label className="myLabel">
-            Lamp Price <input type="number" name="LampPrice" />
-          </label>
+          <LampInput label="Lamp ID" name="LampID" />
+          <LampInput label="Lamp Price" name="LampPrice" />
         </div>
         <button className="myButton">
           <span>Apply</span>
