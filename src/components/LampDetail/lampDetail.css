@@ -19,33 +19,46 @@
 .lamp-detail h3 {
   margin-bottom: 0.5em;
   color: #333;
+  font-size: 24px;
 }
 
 .lamp-detail p {
   margin-bottom: 0.5em;
   color: #666;
+  font-size: 18px;
 }
 
-.lamp-detail .price {
-  font-weight: bold;
-  color: #000;
-}
 
-.lamp-detail .buttons {
+.lamp-actions {
   display: flex;
-  margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  margin-left: 30px;
+  margin-right: 35px;
 }
 
-.lamp-detail .buttons button {
+.lamp-price {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.action-buttons {
+  display: flex;
+}
+
+.action-buttons button {
   appearance: none;
   border: 2px solid #000;
   border-radius: 15px;
   box-sizing: border-box;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   line-height: normal;
-  margin-right: 10px;
+  margin-left: 50px;
+  padding: 15px 30px;
   outline: none;
   text-align: center;
   text-decoration: none;
@@ -54,19 +67,18 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  min-height: 40px;
 }
 
-.lamp-detail .buttons button:disabled {
+.action-buttons button:disabled {
   pointer-events: none;
 }
 
-.lamp-detail .buttons button:hover {
+.action-buttons button:hover {
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
 
-.lamp-detail .buttons button:active {
+.action-buttons button:active {
   box-shadow: none;
   transform: translateY(0);
 }
