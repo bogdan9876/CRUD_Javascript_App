@@ -1,19 +1,19 @@
-
 .lamp-detail {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin: 2em;
   padding: 1em;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .lamp-detail img {
-  margin-bottom: 1em;
   border-radius: 10px;
   object-fit: contain;
+}
+
+.lamp-detail-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
 }
 
 .lamp-detail h3 {
@@ -29,4 +29,44 @@
 .lamp-detail .price {
   font-weight: bold;
   color: #000;
+}
+
+.lamp-detail .buttons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.lamp-detail .buttons button {
+  appearance: none;
+  border: 2px solid #000;
+  border-radius: 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin-right: 10px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  min-height: 40px;
+}
+
+.lamp-detail .buttons button:disabled {
+  pointer-events: none;
+}
+
+.lamp-detail .buttons button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.lamp-detail .buttons button:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
