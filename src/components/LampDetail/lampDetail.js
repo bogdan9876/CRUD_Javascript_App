@@ -29,7 +29,7 @@ function LampDetail() {
         <p className="lamp-price">Price: {lamp.price} uah</p>
         <div className="action-buttons">
         <button onClick={handleGoBack}>Go Back</button>
-          <button disabled>Add to Cart</button>
+          <button>Add to Cart</button>
         </div>
       </div>
     </div>

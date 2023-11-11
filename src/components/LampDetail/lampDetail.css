@@ -69,10 +69,6 @@
   will-change: transform;
 }
 
-.action-buttons button:disabled {
-  pointer-events: none;
-}
-
 .action-buttons button:hover {
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
@@ -81,4 +77,9 @@
 .action-buttons button:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.action-buttons button:nth-child(2) {
+  color: #fff;
+  background-color: #000;
 }
