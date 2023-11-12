@@ -13,26 +13,19 @@
 .selectSort {
   width: 200px;
   height: 35px;
-  border: none;
+  border: 2px solid #333;
   border-radius: 5px;
   padding: 5px;
-  font-size: 14px;
+  font-size: 18px; /* Increased font size */
   margin-left: 30px;
+  background: #f2f2f2;
+  color: #333;
+  cursor: pointer;
 }
 
-.myLabel {
-  flex-direction: column;
-  margin-right: 10px;
-  margin-left: 50px;
-}
-
-.myLabel input {
-  margin-top: 5px;
-  width: 100px;
-  height: 30px;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
+.selectSort:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
 }
 
 .myButton {
@@ -49,6 +42,7 @@
   transition: all 0.3s ease 0s;
   text-align: center;
   text-decoration: none;
+  border: 2px solid #333;
   display: inline-block;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
