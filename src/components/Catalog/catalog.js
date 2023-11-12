@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import './catalog.css';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
 import lamps from '../LampData/lampData';
@@ -32,8 +31,6 @@ function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
     filteredLamps.sort((a, b) => a.price - b.price);
   } else if (sort === 'sortByTitle') {
     filteredLamps.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sort === 'sortByType') {
-    filteredLamps.sort((a, b) => a.type.localeCompare(b.type));
   }
 
   if (id) {
@@ -41,8 +38,22 @@ function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
   }
 
   if (price) {
-    filteredLamps = filteredLamps.filter((lamp) => lamp.price <= price);
+    filteredLamps = filteredLamps.filter((lamp) => {
+      const lampPrice = parseInt(lamp.price, 10);
+  
+      if (price === '1000+') {
+        return lampPrice > 1000;
+      } else if (price === '501-1000') {
+        return lampPrice >= 501 && lampPrice <= 1000;
+      } else if (price === '1001-2000') {
+        return lampPrice >= 1001 && lampPrice <= 2000;
+      } else {
+        return lampPrice <= parseInt(price, 10);
+      }
+    });
   }
+  
+  
 
   return (
     <>

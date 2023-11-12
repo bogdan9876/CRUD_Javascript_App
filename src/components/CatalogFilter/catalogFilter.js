@@ -5,7 +5,6 @@ import SelectSort from './selectSort';
 const sortOptions = [
   { value: 'sortByPrice', label: 'Sort by price' },
   { value: 'sortByTitle', label: 'Sort by title' },
-  { value: 'sortByType', label: 'Sort by type' },
 ];
 
 const idOptions = [
