@@ -1,8 +1,8 @@
-function Button({ onClick }) {
+function Button({ onClick, label }) {
     return (
         <section className="button">
             <div className="view-more">
-                <button type="button" className="view-more-button" onClick={onClick}><a>View More</a></button>
+                <button type="button" className="view-more-button" onClick={onClick}><a>{label}</a></button>
             </div>
         </section>
     );

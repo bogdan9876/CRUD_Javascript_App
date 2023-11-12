@@ -9,8 +9,12 @@ import '../../components/Button/button.css'
 function Home() {
     const [sectionCount, setSectionCount] = useState(1);
 
-    const handleViewMore = () => {
-        setSectionCount(sectionCount + 1);
+    const handleButtonClick = () => {
+        if (sectionCount === 1) {
+            setSectionCount(sectionCount + 1);
+        } else {
+            setSectionCount(sectionCount - 1);
+        }
     };
 
     return (
@@ -19,7 +23,7 @@ function Home() {
         {[...Array(sectionCount)].map((_, index) => (
           <LampsSection key={index} />
         ))}
-        <Button onClick={handleViewMore}/>
+        <Button onClick={handleButtonClick} label={sectionCount === 1 ? 'View More' : 'View Less'}/>
       </div>
     );
 }
