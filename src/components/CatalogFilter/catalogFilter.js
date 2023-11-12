@@ -15,10 +15,9 @@ const idOptions = [
 
 const priceOptions = [
   { value: '500', label: 'Up to 500 uah' },
-  { value: '1000', label: '501 - 1000 uah' },
-  { value: '1000+', label: '1000+ uah' },
+  { value: '501-1000', label: '501 - 1000 uah' },
+  { value: '1001+', label: '1001 uah and above' },
 ];
-
 
 const CatalogFilter = ({ onSortChange, onIdChange, onPriceChange }) => {
   return (

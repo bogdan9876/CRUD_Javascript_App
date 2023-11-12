@@ -40,20 +40,20 @@ function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
   if (price) {
     filteredLamps = filteredLamps.filter((lamp) => {
       const lampPrice = parseInt(lamp.price, 10);
-  
-      if (price === '1000+') {
-        return lampPrice > 1000;
+
+      if (price === '500') {
+        return lampPrice <= 500;
       } else if (price === '501-1000') {
         return lampPrice >= 501 && lampPrice <= 1000;
-      } else if (price === '1001-2000') {
-        return lampPrice >= 1001 && lampPrice <= 2000;
+      } else if (price === '1001+') {
+        return lampPrice >= 1001;
       } else {
-        return lampPrice <= parseInt(price, 10);
+        return false;
       }
     });
   }
-  
-  
+
+
 
   return (
     <>
@@ -61,7 +61,7 @@ function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
       <div className="catalog">
         {filteredLamps.map((lamp) => (
           <div key={lamp.id} className="lamp">
-            <img src={lamp.image} alt={lamp.title} width="300" height="250"/>
+            <img src={lamp.image} alt={lamp.title} width="300" height="250" />
             <h3>{lamp.title}</h3>
             <p>{lamp.description}</p>
             <p><span style={{ fontWeight: 'bold' }}>Price:</span> {lamp.price} uah</p>
