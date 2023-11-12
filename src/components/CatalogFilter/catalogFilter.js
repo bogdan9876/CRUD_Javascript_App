@@ -9,14 +9,14 @@ const options = [
   { value: 'sortByType', label: 'Sort by type' },
 ];
 
-const CatalogFilter = () => {
+const CatalogFilter = ({ onSortChange, onIdChange, onPriceChange }) => {
   return (
     <div className="wrapper">
       <div className="inner">
-        <SelectSort name="sort" options={options} />
+        <SelectSort name="sort" options={options} onChange={onSortChange} />
         <div>
-          <LampInput label="Lamp ID" name="LampID" />
-          <LampInput label="Lamp Price" name="LampPrice" />
+          <LampInput label="Lamp ID" name="LampID" onChange={onIdChange} />
+          <LampInput label="Lamp Price" name="LampPrice" onChange={onPriceChange} />
         </div>
         <button className="myButton">
           <span>Apply</span>

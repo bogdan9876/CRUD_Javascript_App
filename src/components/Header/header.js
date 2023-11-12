@@ -25,8 +25,7 @@ function Header({ searchTerm, onSearchChange }) {
                         </button>
                     </NavLink>
                 </div>
-                <input type="search" className="header__search" placeholder="Search" value={searchTerm} onChange={onSearchChange}/>
-            </div>
+                <input type="search" className="header__search" placeholder="Search" value={searchTerm} onChange={onSearchChange}/></div>
         </header>
     );
 }
