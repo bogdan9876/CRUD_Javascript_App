@@ -1,7 +1,7 @@
 import './header.css';
 import { NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ searchTerm, onSearchChange }) {
     return (
         <header className="header">
             <div className="header__nav">
@@ -25,7 +25,7 @@ function Header() {
                         </button>
                     </NavLink>
                 </div>
-                <input type="search" className="header__search" placeholder="Search" />
+                <input type="search" className="header__search" placeholder="Search" value={searchTerm} onChange={onSearchChange}/>
             </div>
         </header>
     );

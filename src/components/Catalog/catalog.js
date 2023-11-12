@@ -6,12 +6,14 @@ import CatalogFilter from '../CatalogFilter/catalogFilter';
 import lamps from '../LampData/lampData';
 
 
-function Catalog() {
+function Catalog({ searchTerm }) {
   return (
     <>
       <CatalogFilter />
       <div className="catalog">
-        {lamps.map((lamp) => (
+        {lamps
+          .filter((lamp) => lamp.title.toLowerCase().includes(searchTerm.toLowerCase()))
+          .map((lamp) => (
           <div key={lamp.id} className="lamp">
             <img src={lamp.image} alt={lamp.title} width="300" height="250"/>
             <h3>{lamp.title}</h3>
