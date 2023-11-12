@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './CatalogFilter.css';
 import SelectSort from './selectSort';
+import './CatalogFilter.css';
 
 const sortOptions = [
   { value: 'sortByPrice', label: 'Sort by price' },
@@ -8,9 +8,8 @@ const sortOptions = [
 ];
 
 const idOptions = [
-  { value: '1', label: '1' },
-  { value: '2', label: '2' },
-  { value: '3', label: '3' },
+  { value: '1', label: 'ID less than 2' },
+  { value: '2', label: 'ID between 3 and 4' },
 ];
 
 const priceOptions = [
@@ -21,18 +20,18 @@ const priceOptions = [
 
 const CatalogFilter = ({ onApplyFilters }) => {
   const [sort, setSort] = useState('');
-  const [id, setId] = useState('');
+  const [idOption, setIdOption] = useState('');
   const [price, setPrice] = useState('');
 
   const handleApply = () => {
-    onApplyFilters({ sort, id, price });
+    onApplyFilters({ sort, idOption, price });
   };
 
   return (
     <div className="wrapper">
       <div className="inner">
         <SelectSort name="sort" options={sortOptions} onChange={(e) => setSort(e.target.value)} />
-        <SelectSort name="id" options={idOptions} onChange={(e) => setId(e.target.value)} />
+        <SelectSort name="idOption" options={idOptions} onChange={(e) => setIdOption(e.target.value)} />
         <SelectSort name="price" options={priceOptions} onChange={(e) => setPrice(e.target.value)} />
         <button className="myButton" onClick={handleApply}>
           <span>Apply</span>

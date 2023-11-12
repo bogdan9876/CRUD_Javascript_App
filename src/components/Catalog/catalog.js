@@ -6,12 +6,12 @@ import lamps from '../LampData/lampData';
 
 function Catalog({ searchTerm }) {
   const [sort, setSort] = useState('');
-  const [id, setId] = useState('');
+  const [idOption, setIdOption] = useState('');
   const [price, setPrice] = useState('');
 
   const handleApplyFilters = (filters) => {
     setSort(filters.sort);
-    setId(filters.id);
+    setIdOption(filters.idOption);
     setPrice(filters.price);
   };
 
@@ -23,8 +23,10 @@ function Catalog({ searchTerm }) {
     filteredLamps.sort((a, b) => a.title.localeCompare(b.title));
   }
 
-  if (id) {
-    filteredLamps = filteredLamps.filter((lamp) => lamp.id === id);
+  if (idOption === '1') {
+    filteredLamps = filteredLamps.filter((lamp) => lamp.id < 2);
+  } else if (idOption === '2') {
+    filteredLamps = filteredLamps.filter((lamp) => lamp.id >= 3 && lamp.id <= 4);
   }
 
   if (price) {
