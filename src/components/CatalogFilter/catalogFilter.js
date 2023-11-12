@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CatalogFilter.css';
 import SelectSort from './selectSort';
 
@@ -19,14 +19,22 @@ const priceOptions = [
   { value: '1001+', label: '1001 uah and above' },
 ];
 
-const CatalogFilter = ({ onSortChange, onIdChange, onPriceChange }) => {
+const CatalogFilter = ({ onApplyFilters }) => {
+  const [sort, setSort] = useState('');
+  const [id, setId] = useState('');
+  const [price, setPrice] = useState('');
+
+  const handleApply = () => {
+    onApplyFilters({ sort, id, price });
+  };
+
   return (
     <div className="wrapper">
       <div className="inner">
-        <SelectSort name="sort" options={sortOptions} onChange={onSortChange} />
-        <SelectSort name="id" options={idOptions} onChange={onIdChange} />
-        <SelectSort name="price" options={priceOptions} onChange={onPriceChange} />
-        <button className="myButton">
+        <SelectSort name="sort" options={sortOptions} onChange={(e) => setSort(e.target.value)} />
+        <SelectSort name="id" options={idOptions} onChange={(e) => setId(e.target.value)} />
+        <SelectSort name="price" options={priceOptions} onChange={(e) => setPrice(e.target.value)} />
+        <button className="myButton" onClick={handleApply}>
           <span>Apply</span>
         </button>
       </div>

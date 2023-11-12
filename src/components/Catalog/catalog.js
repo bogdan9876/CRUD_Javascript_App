@@ -4,25 +4,15 @@ import './catalog.css';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
 import lamps from '../LampData/lampData';
 
-function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
-  const [sort, setSort] = useState(sortOption);
-  const [id, setId] = useState(lampId);
-  const [price, setPrice] = useState(lampPrice);
+function Catalog({ searchTerm }) {
+  const [sort, setSort] = useState('');
+  const [id, setId] = useState('');
+  const [price, setPrice] = useState('');
 
-  const handleSortChange = (event) => {
-    setSort(event.target.value);
-  };
-
-  const handleIdChange = (event) => {
-    setId(parseInt(event.target.value, 10));
-  };
-
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value);
-  };
-
-  const handleApplyFilters = (event) => {
-    event.preventDefault();
+  const handleApplyFilters = (filters) => {
+    setSort(filters.sort);
+    setId(filters.id);
+    setPrice(filters.price);
   };
 
   let filteredLamps = lamps.filter((lamp) => lamp.title.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -53,11 +43,9 @@ function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
     });
   }
 
-
-
   return (
     <>
-      <CatalogFilter onSortChange={handleSortChange} onIdChange={handleIdChange} onPriceChange={handlePriceChange} onSubmit={handleApplyFilters} />
+      <CatalogFilter onApplyFilters={handleApplyFilters} />
       <div className="catalog">
         {filteredLamps.map((lamp) => (
           <div key={lamp.id} className="lamp">
