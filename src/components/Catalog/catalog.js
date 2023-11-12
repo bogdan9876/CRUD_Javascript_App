@@ -5,7 +5,6 @@ import './catalog.css';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
 import lamps from '../LampData/lampData';
 
-
 function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
   const [sort, setSort] = useState(sortOption);
   const [id, setId] = useState(lampId);
@@ -16,11 +15,15 @@ function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
   };
 
   const handleIdChange = (event) => {
-    setId(event.target.value);
+    setId(parseInt(event.target.value, 10));
   };
 
   const handlePriceChange = (event) => {
     setPrice(event.target.value);
+  };
+
+  const handleApplyFilters = (event) => {
+    event.preventDefault();
   };
 
   let filteredLamps = lamps.filter((lamp) => lamp.title.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -43,7 +46,7 @@ function Catalog({ searchTerm, sortOption, lampId, lampPrice }) {
 
   return (
     <>
-      <CatalogFilter onSortChange={handleSortChange} onIdChange={handleIdChange} onPriceChange={handlePriceChange} />
+      <CatalogFilter onSortChange={handleSortChange} onIdChange={handleIdChange} onPriceChange={handlePriceChange} onSubmit={handleApplyFilters} />
       <div className="catalog">
         {filteredLamps.map((lamp) => (
           <div key={lamp.id} className="lamp">
