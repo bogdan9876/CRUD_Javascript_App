@@ -21,6 +21,8 @@ function LampDetail() {
       <div className="lamp-detail">
         <img src={process.env.PUBLIC_URL + '/' + lamp.image} alt={lamp.title} width="700" height="500" />
         <div className="lamp-info">
+          <button className="characteristic-btn blue">1 characteristic</button>
+          <button className="characteristic-btn black">2 characteristic</button>
           <h3>{lamp.title}</h3>
           <p>{lamp.description}</p>
         </div>
@@ -28,7 +30,7 @@ function LampDetail() {
       <div className="lamp-actions">
         <p className="lamp-price">Price: {lamp.price} uah</p>
         <div className="action-buttons">
-        <button onClick={handleGoBack}>Go Back</button>
+          <button onClick={handleGoBack}>Go Back</button>
           <button>Add to Cart</button>
         </div>
       </div>
