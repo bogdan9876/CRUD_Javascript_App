@@ -8,6 +8,7 @@
 .lamp-detail img {
   border-radius: 10px;
   object-fit: contain;
+  margin-right: 70px;
 }
 
 .lamp-detail-content {
@@ -19,7 +20,7 @@
 .lamp-detail h3 {
   margin-bottom: 0.5em;
   color: #333;
-  font-size: 24px;
+  font-size: 36px;
 }
 
 .lamp-detail p {
@@ -28,6 +29,10 @@
   font-size: 18px;
 }
 
+.lamp-detail h4 {
+  color: #333;
+  font-size: 22px;
+}
 
 .lamp-actions {
   display: flex;
@@ -102,4 +107,34 @@
 .black {
   background-color: #000;
   color: white;
+}
+
+.lamp-detail-add-info {
+  display: flex;
+}
+
+.lamp-selector-container {
+  margin-left: 150px;
+}
+
+.lamp-selector {
+  padding: 8px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid#000000;
+  outline: none;
+  cursor: pointer;
+  width: 170px;
+  color: #666;
+  font-size: 18px;
+}
+
+.lamp-id-number {
+  padding: 8px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid#000000;
+  outline: none;
+  cursor: pointer;
+  width: 150px;
 }

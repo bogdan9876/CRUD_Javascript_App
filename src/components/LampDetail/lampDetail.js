@@ -25,6 +25,21 @@ function LampDetail() {
           <button className="characteristic-btn black">2 characteristic</button>
           <h3>{lamp.title}</h3>
           <p>{lamp.description}</p>
+          <div className="lamp-detail-add-info">
+            <div className="lamp-id">
+              <h4>ID</h4>
+              <p className="lamp-id-number">{lamp.id}</p>
+            </div>
+            <div className="lamp-selector-container">
+              <h4>Select Color:</h4>
+              <select className="lamp-selector">
+                <option>Select</option>
+                <option>Red</option>
+                <option>Blue</option>
+                <option>Yellow</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
       <div className="lamp-actions">
