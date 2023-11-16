@@ -3,16 +3,19 @@ import SelectSort from './selectSort';
 import './CatalogFilter.css';
 
 const sortOptions = [
+  { value: '', label: 'Choose option' },
   { value: 'sortByPrice', label: 'Sort by price' },
   { value: 'sortByTitle', label: 'Sort by title' },
 ];
 
 const idOptions = [
+  { value: '', label: 'Choose option' },
   { value: '1', label: 'ID less than 2' },
   { value: '2', label: 'ID between 3 and 4' },
 ];
 
 const priceOptions = [
+  { value: '', label: 'Choose option' },
   { value: '500', label: 'Up to 500 uah' },
   { value: '501-1000', label: '501 - 1000 uah' },
   { value: '1001+', label: '1001 uah and above' },

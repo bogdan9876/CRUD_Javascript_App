@@ -29,10 +29,10 @@ function Catalog({ searchTerm }) {
     filteredLamps = filteredLamps.filter((lamp) => lamp.id >= 3 && lamp.id <= 4);
   }
 
-  if (price) {
+  if (price !== '') {
     filteredLamps = filteredLamps.filter((lamp) => {
       const lampPrice = parseInt(lamp.price, 10);
-
+  
       if (price === '500') {
         return lampPrice <= 500;
       } else if (price === '501-1000') {
@@ -44,7 +44,7 @@ function Catalog({ searchTerm }) {
       }
     });
   }
-
+  
   return (
     <>
       <CatalogFilter onApplyFilters={handleApplyFilters} />
