@@ -1,13 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './catalog.css';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
-import lamps from '../LampData/lampData';
+import './catalog.css';
 
 function Catalog({ searchTerm }) {
+  const [filteredLamps, setFilteredLamps] = useState([]);
+  const [lamps, setLamps] = useState([
+    {
+      id: 1,
+      image: "images/section2(1).jpg",
+      title: " Electro1",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      price: 1000
+    },
+    {
+      id: 2,
+      image: "images/section2(2).jpg",
+      title: "Wood1",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      price: 1500
+    },
+    {
+      id: 3,
+      image: "images/section2(3).jpg",
+      title: "Wood2",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      price: 5000
+    },
+    {
+      id: 4,
+      image: "images/section2(4).jpg",
+      title: "Electro2",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      price: 1200
+    },
+  ]);
   const [sort, setSort] = useState('');
   const [idOption, setIdOption] = useState('');
   const [price, setPrice] = useState('');
+
+  const applyFilters = () => {
+    let filtered = lamps.filter((lamp) =>
+      lamp.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  
+    if (sort === 'sortByPrice') {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sort === 'sortByTitle') {
+      filtered.sort((a, b) => a.title.localeCompare(b.title));
+    }
+  
+    if (idOption === '1') {
+      filtered = filtered.filter((lamp) => lamp.id < 2);
+    } else if (idOption === '2') {
+      filtered = filtered.filter((lamp) => lamp.id >= 3 && lamp.id <= 4);
+    }
+  
+    if (price !== '') {
+      const [minPrice, maxPrice] = price.split('-').map(Number);
+      filtered = filtered.filter((lamp) => {
+        const lampPrice = parseInt(lamp.price, 10);
+        return lampPrice >= minPrice && (maxPrice ? lampPrice <= maxPrice : true);
+      });
+    }
+  
+    setFilteredLamps(filtered);
+  };
+
+  useEffect(() => {
+    applyFilters();
+  }, [sort, idOption, price, searchTerm]);
 
   const handleApplyFilters = (filters) => {
     setSort(filters.sort);
@@ -15,36 +77,6 @@ function Catalog({ searchTerm }) {
     setPrice(filters.price);
   };
 
-  let filteredLamps = lamps.filter((lamp) => lamp.title.toLowerCase().includes(searchTerm.toLowerCase()));
-
-  if (sort === 'sortByPrice') {
-    filteredLamps.sort((a, b) => a.price - b.price);
-  } else if (sort === 'sortByTitle') {
-    filteredLamps.sort((a, b) => a.title.localeCompare(b.title));
-  }
-
-  if (idOption === '1') {
-    filteredLamps = filteredLamps.filter((lamp) => lamp.id < 2);
-  } else if (idOption === '2') {
-    filteredLamps = filteredLamps.filter((lamp) => lamp.id >= 3 && lamp.id <= 4);
-  }
-
-  if (price !== '') {
-    filteredLamps = filteredLamps.filter((lamp) => {
-      const lampPrice = parseInt(lamp.price, 10);
-  
-      if (price === '500') {
-        return lampPrice <= 500;
-      } else if (price === '501-1000') {
-        return lampPrice >= 501 && lampPrice <= 1000;
-      } else if (price === '1001+') {
-        return lampPrice >= 1001;
-      } else {
-        return false;
-      }
-    });
-  }
-  
   return (
     <>
       <CatalogFilter onApplyFilters={handleApplyFilters} />

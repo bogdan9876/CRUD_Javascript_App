@@ -16,9 +16,11 @@ const idOptions = [
 
 const priceOptions = [
   { value: '', label: 'Choose option' },
-  { value: '500', label: 'Up to 500 uah' },
+  { value: '0-500', label: 'Up to 500 uah' },
   { value: '501-1000', label: '501 - 1000 uah' },
-  { value: '1001+', label: '1001 uah and above' },
+  { value: '1001-2000', label: '1001 - 2000 uah' },
+  { value: '2001-10000', label: '2001 uah to 10000'},
+  { value: '10001-100000', label: '10001 uah and above'},
 ];
 
 const CatalogFilter = ({ onApplyFilters }) => {

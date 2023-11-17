@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import lamps from '../LampData/lampData';
 import './lampDetail.css';
@@ -6,7 +6,8 @@ import './lampDetail.css';
 function LampDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const lamp = lamps.find((lamp) => lamp.id === parseInt(id));
+  const [lamp, setLamp] = useState(lamps.find((lamp) => lamp.id === parseInt(id)));
+  const [color, setColor] = useState('');
 
   if (!lamp) {
     return <div>Lamp not found</div>;
@@ -14,6 +15,10 @@ function LampDetail() {
 
   const handleGoBack = () => {
     navigate('/catalog');
+  };
+
+  const handleColorChange = (event) => {
+    setColor(event.target.value);
   };
 
   return (
@@ -32,7 +37,7 @@ function LampDetail() {
             </div>
             <div className="lamp-selector-container">
               <h4>Select Color:</h4>
-              <select className="lamp-selector">
+              <select className="lamp-selector" value={color} onChange={handleColorChange}>
                 <option>Select</option>
                 <option>Red</option>
                 <option>Blue</option>
