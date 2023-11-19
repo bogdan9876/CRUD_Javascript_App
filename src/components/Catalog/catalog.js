@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
+import Spinner from 'react-bootstrap/Spinner';
 import axios from 'axios';
 import './catalog.css';
 
@@ -54,7 +55,11 @@ function Catalog({ searchTerm }) {
     <>
       <CatalogFilter onApplyFilters={handleApplyFilters} />
       {isLoading ? (
-        <p>Loading...</p>
+        <div style={{ display: 'flex', justifyContent: 'center',color: 'black', alignItems: 'center', height: '100vh' }}>
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
       ) : (
         <div className="catalog">
           {filteredLamps.map((lamp) => (

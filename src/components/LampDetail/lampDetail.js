@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import lamps from '../LampData/lampData';
+import axios from 'axios';
 import './lampDetail.css';
 
 function LampDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [lamp, setLamp] = useState(lamps.find((lamp) => lamp.id === parseInt(id)));
+  const [lamp, setLamp] = useState(null);
   const [color, setColor] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    axios.get(`http://localhost:8080/api/lamps/${id}`)
+      .then(response => {
+        setLamp(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching lamp details:', error);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      });
+  }, [id]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!lamp) {
     return <div>Lamp not found</div>;
