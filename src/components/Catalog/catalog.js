@@ -9,8 +9,10 @@ function Catalog({ searchTerm }) {
   const [sort, setSort] = useState('');
   const [idOption, setIdOption] = useState('');
   const [price, setPrice] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const applyFilters = () => {
+    setIsLoading(true);
     axios.get('http://localhost:8080/api/lamps/filtered', {
       params: {
         searchTerm,
@@ -24,14 +26,20 @@ function Catalog({ searchTerm }) {
     })
     .catch(error => {
       console.error('P', error);
+    })
+    .finally(() => {
+      setIsLoading(false);
     });
   };
 
   useEffect(() => {
-    if (sort !== '' || idOption !== '' || price !== '' || searchTerm !== '') {
-      applyFilters();
-    }
+    applyFilters();
+  }, []);
+
+  useEffect(() => {
+    applyFilters();
   }, [sort, idOption, price, searchTerm]);
+  
 
   const handleApplyFilters = (filters) => {
     setSort(filters.sort);
@@ -42,17 +50,21 @@ function Catalog({ searchTerm }) {
   return (
     <>
       <CatalogFilter onApplyFilters={handleApplyFilters} />
-      <div className="catalog">
-        {filteredLamps.map((lamp) => (
-          <div key={lamp.id} className="lamp">
-            <img src={lamp.image} alt={lamp.title} width="300" height="250" />
-            <h3>{lamp.title}</h3>
-            <p>{lamp.description}</p>
-            <p><span style={{ fontWeight: 'bold' }}>Price:</span> {lamp.price} uah</p>
-            <Link to={`/lamp/${lamp.id}`} className="lamp-link">View more</Link>
-          </div>
-        ))}
-      </div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="catalog">
+          {filteredLamps.map((lamp) => (
+            <div key={lamp.id} className="lamp">
+              <img src={lamp.image} alt={lamp.title} width="300" height="250" />
+              <h3>{lamp.title}</h3>
+              <p>{lamp.description}</p>
+              <p><span style={{ fontWeight: 'bold' }}>Price:</span> {lamp.price} uah</p>
+              <Link to={`/lamp/${lamp.id}`} className="lamp-link">View more</Link>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 }
