@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
-import lamps from '../LampData/lampData';
+import axios from 'axios';
 import './catalog.css';
 
 function Catalog({ searchTerm }) {
@@ -11,35 +11,26 @@ function Catalog({ searchTerm }) {
   const [price, setPrice] = useState('');
 
   const applyFilters = () => {
-    let filtered = lamps.filter((lamp) =>
-      lamp.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  
-    if (sort === 'sortByPrice') {
-      filtered.sort((a, b) => a.price - b.price);
-    } else if (sort === 'sortByTitle') {
-      filtered.sort((a, b) => a.title.localeCompare(b.title));
-    }
-  
-    if (idOption === '1') {
-      filtered = filtered.filter((lamp) => lamp.id < 2);
-    } else if (idOption === '2') {
-      filtered = filtered.filter((lamp) => lamp.id >= 3 && lamp.id <= 4);
-    }
-  
-    if (price !== '') {
-      const [minPrice, maxPrice] = price.split('-').map(Number);
-      filtered = filtered.filter((lamp) => {
-        const lampPrice = parseInt(lamp.price, 10);
-        return lampPrice >= minPrice && (maxPrice ? lampPrice <= maxPrice : true);
-      });
-    }
-  
-    setFilteredLamps(filtered);
+    axios.get('http://localhost:8080/api/lamps/filtered', {
+      params: {
+        searchTerm,
+        sort: sort || null,
+        idOption: idOption || null,
+        price: price || null,
+      }
+    })
+    .then(response => {
+      setFilteredLamps(response.data);
+    })
+    .catch(error => {
+      console.error('P', error);
+    });
   };
 
   useEffect(() => {
-    applyFilters();
+    if (sort !== '' || idOption !== '' || price !== '' || searchTerm !== '') {
+      applyFilters();
+    }
   }, [sort, idOption, price, searchTerm]);
 
   const handleApplyFilters = (filters) => {
