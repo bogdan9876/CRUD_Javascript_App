@@ -1,10 +1,11 @@
 .catalog {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   overflow-x: auto;
   padding: 20px;
   margin-bottom: 100px;
-  justify-content: space-between
+  justify-content: center;
+  gap: 3rem;
 }
 
 .lamp {
@@ -14,6 +15,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   background-color: #ffffff;
+  width: 15vw;
 }
 
 .lamp img {

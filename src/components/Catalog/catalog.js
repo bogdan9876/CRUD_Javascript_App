@@ -21,15 +21,18 @@ function Catalog({ searchTerm }) {
         price: price || null,
       }
     })
-    .then(response => {
-      setFilteredLamps(response.data);
-    })
-    .catch(error => {
-      console.error('P', error);
-    })
-    .finally(() => {
-      setIsLoading(false);
-    });
+      .then(response => {
+        setFilteredLamps(response.data);
+      })
+      .catch(error => {
+        console.error('P', error);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      });
+
   };
 
   useEffect(() => {
@@ -39,7 +42,7 @@ function Catalog({ searchTerm }) {
   useEffect(() => {
     applyFilters();
   }, [sort, idOption, price, searchTerm]);
-  
+
 
   const handleApplyFilters = (filters) => {
     setSort(filters.sort);
