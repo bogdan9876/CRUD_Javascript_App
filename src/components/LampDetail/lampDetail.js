@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Loader from '../Loader/loader';
 import axios from 'axios';
 import './lampDetail.css';
 
@@ -27,9 +28,13 @@ function LampDetail() {
   }, [id]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Loader />
+      </div>
+    );
   }
-
+  
   if (!lamp) {
     return <div>Lamp not found</div>;
   }
