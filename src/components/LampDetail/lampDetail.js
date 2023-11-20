@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/loader';
-import axios from 'axios';
+import { getLampById } from '../../api';
 import './lampDetail.css';
 
 function LampDetail() {
@@ -12,19 +12,19 @@ function LampDetail() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    axios.get(`http://localhost:8080/api/lamps/${id}`)
-      .then(response => {
-        setLamp(response.data);
-      })
-      .catch(error => {
+    const fetchLamp = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getLampById(id);
+        setLamp(data);
+      } catch (error) {
         console.error('Error fetching lamp details:', error);
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 500);
-      });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLamp();
   }, [id]);
 
   if (isLoading) {

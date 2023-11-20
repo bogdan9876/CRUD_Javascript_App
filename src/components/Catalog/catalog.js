@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
 import Loader from '../Loader/loader';
-import axios from 'axios';
+import { getFilteredLamps } from '../../api';
 import './catalog.css';
 
 function Catalog({ searchTerm }) {
@@ -12,28 +12,16 @@ function Catalog({ searchTerm }) {
   const [price, setPrice] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const applyFilters = () => {
+  const applyFilters = async () => {
     setIsLoading(true);
-    axios.get('http://localhost:8080/api/lamps/filtered', {
-      params: {
-        searchTerm,
-        sort: sort || null,
-        idOption: idOption || null,
-        price: price || null,
-      }
-    })
-      .then(response => {
-        setFilteredLamps(response.data);
-      })
-      .catch(error => {
-        console.error('P', error);
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 500);
-      });
-
+    try {
+      const data = await getFilteredLamps({ searchTerm, sort, idOption, price });
+      setFilteredLamps(data);
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
