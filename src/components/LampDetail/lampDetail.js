@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/loader';
 import { getLampById } from '../../api';
@@ -11,7 +11,14 @@ function LampDetail() {
   const [color, setColor] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const hasMounted = useRef(false);
+
   useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
+
     const fetchLamp = async () => {
       setIsLoading(true);
       try {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CatalogFilter from '../CatalogFilter/catalogFilter';
 import Loader from '../Loader/loader';
@@ -11,6 +11,8 @@ function Catalog({ searchTerm }) {
   const [idOption, setIdOption] = useState('');
   const [price, setPrice] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const prevSearchTerm = useRef('');
+  const hasMounted = useRef(false);
 
   const applyFilters = async () => {
     setIsLoading(true);
@@ -25,7 +27,20 @@ function Catalog({ searchTerm }) {
   };
 
   useEffect(() => {
-    applyFilters();
+    const fetchData = async () => {
+      applyFilters();
+    };
+
+    if (hasMounted.current) {
+      fetchData();
+    } else {
+      hasMounted.current = true;
+    }
+
+    if (prevSearchTerm.current !== searchTerm) {
+      fetchData();
+      prevSearchTerm.current = searchTerm;
+    }
   }, [sort, idOption, price, searchTerm]);
 
   const handleApplyFilters = (filters) => {
