@@ -26,12 +26,7 @@ function Catalog({ searchTerm }) {
 
   useEffect(() => {
     applyFilters();
-  }, []);
-
-  useEffect(() => {
-    applyFilters();
   }, [sort, idOption, price, searchTerm]);
-
 
   const handleApplyFilters = (filters) => {
     setSort(filters.sort);
