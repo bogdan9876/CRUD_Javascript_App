@@ -11,7 +11,6 @@ function Catalog({ searchTerm }) {
   const [idOption, setIdOption] = useState('');
   const [price, setPrice] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const prevSearchTerm = useRef('');
   const hasMounted = useRef(false);
 
   const applyFilters = async () => {
@@ -37,10 +36,6 @@ function Catalog({ searchTerm }) {
       hasMounted.current = true;
     }
 
-    if (prevSearchTerm.current !== searchTerm) {
-      fetchData();
-      prevSearchTerm.current = searchTerm;
-    }
   }, [sort, idOption, price, searchTerm]);
 
   const handleApplyFilters = (filters) => {
