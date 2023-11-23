@@ -10,8 +10,9 @@ const sortOptions = [
 
 const idOptions = [
   { value: '', label: 'Choose option' },
-  { value: '1', label: 'ID less than 2' },
-  { value: '2', label: 'ID between 3 and 4' },
+  { value: '1', label: 'ID less than 4' },
+  { value: '2', label: 'ID between 4 and 6' },
+  { value: '3', label: 'ID more than 6' },
 ];
 
 const priceOptions = [
