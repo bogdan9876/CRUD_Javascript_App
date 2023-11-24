@@ -23,6 +23,6 @@ export const getLampById = async (id) => {
     return response.data;
   } catch (error) {
     console.error('Error fetching lamp details:', error);
-    throw error;
+     throw error;
   }
 };
