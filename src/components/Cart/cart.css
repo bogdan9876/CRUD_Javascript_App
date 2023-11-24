@@ -1,0 +1,24 @@
+.cart-container {
+    padding: 20px;
+  }
+  
+  .cart-items {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .cart-item img {
+    margin-right: 10px;
+  }
+  
+  .item-details {
+    display: flex;
+    flex-direction: column;
+  }
+  

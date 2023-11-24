@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Loader from '../Loader/loader';
 import { getLampById } from '../../api';
+import { addToCart } from '../../cartActions';
 import './lampDetail.css';
 
 function LampDetail() {
@@ -10,15 +12,10 @@ function LampDetail() {
   const [lamp, setLamp] = useState(null);
   const [color, setColor] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
   const hasMounted = useRef(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!hasMounted.current) {
-      hasMounted.current = true;
-      return;
-    }
-
     const fetchLamp = async () => {
       setIsLoading(true);
       try {
@@ -31,7 +28,11 @@ function LampDetail() {
       }
     };
 
-    fetchLamp();
+    if (hasMounted.current) {
+      fetchLamp();
+    } else {
+      hasMounted.current = true;
+    }
   }, [id]);
 
   if (isLoading) {
@@ -52,6 +53,11 @@ function LampDetail() {
 
   const handleColorChange = (event) => {
     setColor(event.target.value);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(lamp));
+    console.log("ROman");
   };
 
   return (
@@ -84,7 +90,7 @@ function LampDetail() {
         <p className="lamp-price">Price: {lamp.price} uah</p>
         <div className="action-buttons">
           <button onClick={handleGoBack}>Go Back</button>
-          <button>Add to Cart</button>
+          <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
       </div>
     </div>
