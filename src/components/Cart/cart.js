@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { removeFromCart, incrementItemQuantity, decrementItemQuantity } from '../../redux/cartActions';
 import './cart.css';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.items);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleRemoveFromCart = (itemId) => {
     dispatch(removeFromCart(itemId));
@@ -18,7 +20,10 @@ const Cart = () => {
   const handleDecrementQuantity = (itemId) => {
     dispatch(decrementItemQuantity(itemId));
   };
-  
+
+  const handleBackToCatalog = () => {
+    navigate('/catalog');
+  };
 
   return (
     <div className="cart">
@@ -37,8 +42,12 @@ const Cart = () => {
           </li>
         ))}
       </ul>
+      <div className="cart-buttons">
+        <button onClick={handleBackToCatalog}>Back to Catalog</button>
+        <button>Continue</button>
+      </div>
     </div>
-  );  
+  );
 };
 
 export default Cart;
