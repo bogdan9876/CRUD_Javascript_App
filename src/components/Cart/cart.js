@@ -38,6 +38,15 @@ const Cart = () => {
     navigate(`/lamp/${itemId}`);
   };
 
+  const handleClearAllItems = () => {
+    const confirmed = window.confirm('Are you sure to remove all items from cart?');
+    if (confirmed) {
+      cartItems.forEach((item) => {
+        dispatch(removeFromCart(item.id));
+      });
+    }
+  };
+
   return (
     <div className="cart">
       <h2>Shopping Cart</h2>
@@ -60,7 +69,7 @@ const Cart = () => {
       </div>
       <div className="cart-buttons">
         <button onClick={handleBackToCatalog}>Back to Catalog</button>
-        <button>Clear All</button>
+        <button onClick={handleClearAllItems}>Clear All</button>
         <button>Continue</button>
       </div>
     </div>
