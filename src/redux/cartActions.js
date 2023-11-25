@@ -12,3 +12,8 @@ export const incrementItemQuantity = (itemId) => ({
   type: 'INCREMENT_ITEM_QUANTITY',
   payload: itemId,
 });
+
+export const decrementItemQuantity = (itemId) => ({
+  type: 'DECREMENT_ITEM_QUANTITY',
+  payload: itemId,
+});

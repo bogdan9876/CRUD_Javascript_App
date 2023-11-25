@@ -21,9 +21,24 @@ const cartReducer = (state = initialState, action) => {
           item.id === action.payload ? { ...item, quantity: item.quantity + 1 } : item
         ),
       };
-    default:
-      return state;
-  }
-};
+      case 'DECREMENT_ITEM_QUANTITY':
+        return {
+          ...state,
+          items: state.items.map(item => {
+            if (item.id === action.payload) {
+              if (item.quantity === 1) {
+                return null;
+              } else {
+                return { ...item, quantity: item.quantity - 1 };
+              }
+            }
+            return item;
+          }).filter(Boolean),
+        };
+        
+      default:
+        return state;
+    }
+  };
 
 export default cartReducer;

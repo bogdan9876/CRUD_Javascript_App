@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, incrementItemQuantity } from '../../redux/cartActions';
+import { removeFromCart, incrementItemQuantity, decrementItemQuantity } from '../../redux/cartActions';
 import './cart.css';
 
 const Cart = () => {
@@ -15,6 +15,11 @@ const Cart = () => {
     dispatch(incrementItemQuantity(itemId));
   };
 
+  const handleDecrementQuantity = (itemId) => {
+    dispatch(decrementItemQuantity(itemId));
+  };
+  
+
   return (
     <div className="cart">
       <h2>Cart Items</h2>
@@ -25,7 +30,7 @@ const Cart = () => {
             <div className="item-details">
               <p>{item.title}</p>
               <p>Price: {item.price} uah</p>
-              <button onClick={() => handleRemoveFromCart(item.id)}>-</button>
+              <button onClick={() => handleDecrementQuantity(item.id)}>-</button>
               <p>Quantity: {item.quantity}</p>
               <button onClick={() => handleIncrementQuantity(item.id)}>+</button>
             </div>
