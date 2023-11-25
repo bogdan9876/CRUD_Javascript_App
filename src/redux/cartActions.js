@@ -12,3 +12,8 @@ export const decrementItemQuantity = (itemId) => ({
   type: 'DECREMENT_ITEM_QUANTITY',
   payload: itemId,
 });
+
+export const removeFromCart = (itemId) => ({
+  type: 'REMOVE_FROM_CART',
+  payload: itemId,
+});

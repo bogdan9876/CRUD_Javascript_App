@@ -13,8 +13,15 @@ const Cart = () => {
     dispatch(incrementItemQuantity(itemId));
   };
 
-  const handleDecrementQuantity = (itemId) => {
-    dispatch(decrementItemQuantity(itemId));
+  const handleDecrementQuantity = (itemId, quantity) => {
+    if (quantity === 1) {
+      const confirmed = window.confirm('Are you sure to remove this item from cart?');
+      if (confirmed) {
+        dispatch(removeFromCart(itemId));
+      }
+    } else {
+      dispatch(decrementItemQuantity(itemId));
+    }
   };
 
   const handleBackToCatalog = () => {
@@ -29,6 +36,15 @@ const Cart = () => {
 
   const handleItemDetailClick = (itemId) => {
     navigate(`/lamp/${itemId}`);
+  };
+
+  const handleClearAllItems = () => {
+    const confirmed = window.confirm('Are you sure to remove all items from cart?');
+    if (confirmed) {
+      cartItems.forEach((item) => {
+        dispatch(removeFromCart(item.id));
+      });
+    }
   };
 
   return (
@@ -53,6 +69,7 @@ const Cart = () => {
       </div>
       <div className="cart-buttons">
         <button onClick={handleBackToCatalog}>Back to Catalog</button>
+        <button onClick={handleClearAllItems}>Clear All</button>
         <button>Continue</button>
       </div>
     </div>
