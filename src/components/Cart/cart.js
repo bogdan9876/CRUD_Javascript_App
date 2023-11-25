@@ -9,10 +9,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleRemoveFromCart = (itemId) => {
-    dispatch(removeFromCart(itemId));
-  };
-
   const handleIncrementQuantity = (itemId) => {
     dispatch(incrementItemQuantity(itemId));
   };
@@ -23,6 +19,12 @@ const Cart = () => {
 
   const handleBackToCatalog = () => {
     navigate('/catalog');
+  };
+
+  const calculateTotalAmount = () => {
+    return cartItems.reduce((total, item) => {
+      return total + item.quantity * item.price;
+    }, 0);
   };
 
   return (
@@ -42,6 +44,9 @@ const Cart = () => {
           </li>
         ))}
       </ul>
+      <div className="cart-total">
+        <p>Total amount: {calculateTotalAmount()} uah</p>
+      </div>
       <div className="cart-buttons">
         <button onClick={handleBackToCatalog}>Back to Catalog</button>
         <button>Continue</button>
