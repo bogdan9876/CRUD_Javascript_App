@@ -27,15 +27,19 @@ const Cart = () => {
     }, 0);
   };
 
+  const handleItemDetailClick = (itemId) => {
+    navigate(`/lamp/${itemId}`);
+  };
+
   return (
     <div className="cart">
       <h2>Cart Items</h2>
       <ul className="cart-items">
         {cartItems.map((item) => (
           <li key={item.id} className="cart-item">
-            <img src={item.image} alt={item.title} width="100" height="100" />
+            <img src={item.image} onClick={() => handleItemDetailClick(item.id)} alt={item.title} width="100" height="100" style={{ cursor: 'pointer' }}/>
             <div className="item-details">
-              <p>{item.title}</p>
+              <p onClick={() => handleItemDetailClick(item.id)} style={{ cursor: 'pointer' }}> {item.title}</p>
               <p>Price: {item.price} uah</p>
               <button onClick={() => handleDecrementQuantity(item.id)}>-</button>
               <p>Quantity: {item.quantity}</p>
