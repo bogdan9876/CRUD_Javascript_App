@@ -7,3 +7,8 @@ export const removeFromCart = (itemId) => ({
   type: 'REMOVE_FROM_CART',
   payload: itemId,
 });
+
+export const incrementItemQuantity = (itemId) => ({
+  type: 'INCREMENT_ITEM_QUANTITY',
+  payload: itemId,
+});

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Loader from '../Loader/loader';
 import { getLampById } from '../../api';
-import { addToCart } from '../../cartActions';
+import { addToCart } from '../../redux/cartActions';
 import './lampDetail.css';
 
 function LampDetail() {
@@ -57,7 +57,7 @@ function LampDetail() {
 
   const handleAddToCart = () => {
     dispatch(addToCart(lamp));
-    console.log("ROman");
+    navigate('/cart');
   };
 
   return (
