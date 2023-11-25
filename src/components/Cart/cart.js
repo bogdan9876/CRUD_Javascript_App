@@ -18,11 +18,11 @@ const Cart = () => {
   return (
     <div className="cart">
       <h2>Cart Items</h2>
-      <ul>
+      <ul className="cart-items">
         {cartItems.map((item) => (
-          <li key={item.id}>
-            <img src={item.image} alt={item.title} width="50" height="50" />
-            <div>
+          <li key={item.id} className="cart-item">
+            <img src={item.image} alt={item.title} width="100" height="100" />
+            <div className="item-details">
               <p>{item.title}</p>
               <p>Price: {item.price} uah</p>
               <button onClick={() => handleRemoveFromCart(item.id)}>-</button>
@@ -33,7 +33,7 @@ const Cart = () => {
         ))}
       </ul>
     </div>
-  );
+  );  
 };
 
 export default Cart;
