@@ -38,28 +38,19 @@ const Cart = () => {
     navigate(`/lamp/${itemId}`);
   };
 
-  const handleClearAllItems = () => {
-    const confirmed = window.confirm('Are you sure to remove all items from cart?');
-    if (confirmed) {
-      cartItems.forEach((item) => {
-        dispatch(removeFromCart(item.id));
-      });
-    }
-  };
-
   return (
     <div className="cart">
-      <h2>Cart Items</h2>
+      <h2>Shopping Cart</h2>
       <ul className="cart-items">
         {cartItems.map((item) => (
           <li key={item.id} className="cart-item">
             <img src={item.image} onClick={() => handleItemDetailClick(item.id)} alt={item.title} width="100" height="100" style={{ cursor: 'pointer' }}/>
             <div className="item-details">
               <p onClick={() => handleItemDetailClick(item.id)} style={{ cursor: 'pointer' }}> {item.title}</p>
-              <p>Price: {item.price} uah</p>
-              <button onClick={() => handleDecrementQuantity(item.id)}>-</button>
-              <p>Quantity: {item.quantity}</p>
+              <button onClick={() => handleDecrementQuantity(item.id, item.quantity)}>-</button>
+              <p>{item.quantity}</p>
               <button onClick={() => handleIncrementQuantity(item.id)}>+</button>
+              <p>{item.price * item.quantity} uah</p>
             </div>
           </li>
         ))}
@@ -69,7 +60,7 @@ const Cart = () => {
       </div>
       <div className="cart-buttons">
         <button onClick={handleBackToCatalog}>Back to Catalog</button>
-        <button onClick={handleClearAllItems}>Clear All</button>
+        <button>Clear All</button>
         <button>Continue</button>
       </div>
     </div>
