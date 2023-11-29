@@ -2,11 +2,11 @@ import axios from 'axios';
 
 export const getFilteredLamps = async ({ searchTerm, sort, idOption, price }) => {
   try {
-    const response = await axios.get('https://lab9-demo-7af7682d4970.herokuapp.com/api/lamps/filtered', {
+    const response = await axios.get('http://localhost:8080/api/lamps/filtered', {
       params: {
         searchTerm,
-        sort: sort || null,
-        idOption: idOption || null,
+        sort: sort  null,
+        idOption: idOption  null,
         price: price || null,
       }
     });
@@ -19,7 +19,7 @@ export const getFilteredLamps = async ({ searchTerm, sort, idOption, price }) =>
 
 export const getLampById = async (id) => {
   try {
-    const response = await axios.get(`https://lab9-demo-7af7682d4970.herokuapp.com/api/lamps/${id}`);
+    const response = await axios.get(http://localhost:8080/api/lamps/${id});
     return response.data;
   } catch (error) {
     console.error('Error fetching lamp details:', error);
