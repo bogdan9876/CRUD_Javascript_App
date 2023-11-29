@@ -53,13 +53,13 @@ const Cart = () => {
       <ul className="cart-items">
         {cartItems.map((item) => (
           <li key={item.id} className="cart-item">
-            <img src={item.image} onClick={() => handleItemDetailClick(item.id)} alt={item.title} width="100" height="100" style={{ cursor: 'pointer' }}/>
+            <img className='cart-item-image' src={item.image} onClick={() => handleItemDetailClick(item.id)} alt={item.title} width="120" height="120" style={{ cursor: 'pointer' }}/>
             <div className="item-details">
-              <p onClick={() => handleItemDetailClick(item.id)} style={{ cursor: 'pointer' }}> {item.title}</p>
+              <p className='cart-item-name' onClick={() => handleItemDetailClick(item.id)} style={{ cursor: 'pointer' }}> {item.title}</p>
               <button onClick={() => handleDecrementQuantity(item.id, item.quantity)}>-</button>
-              <p>{item.quantity}</p>
+              <p className='cart-item-quantity'>{item.quantity}</p>
               <button onClick={() => handleIncrementQuantity(item.id)}>+</button>
-              <p>{item.price * item.quantity} uah</p>
+              <p className='cart-item-price'>{item.price * item.quantity} uah</p>
             </div>
           </li>
         ))}
@@ -68,9 +68,11 @@ const Cart = () => {
         <p>Total amount: {calculateTotalAmount()} uah</p>
       </div>
       <div className="cart-buttons">
+        <div className='cart-buttons-2'>
         <button onClick={handleBackToCatalog}>Back to Catalog</button>
         <button onClick={handleClearAllItems}>Clear All</button>
-        <button>Continue</button>
+        </div>
+        <button className='cart-buttons-last-button'>Continue</button>
       </div>
     </div>
   );
