@@ -37,7 +37,7 @@ const FormikPage = () => {
 
   return (
     <div>
-      <h2>Checkout</h2>
+      <h2 className='checkout'>Checkout</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
