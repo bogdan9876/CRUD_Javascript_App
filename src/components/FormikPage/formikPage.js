@@ -48,33 +48,24 @@ const FormikPage = () => {
             <div>
               <label htmlFor="firstName">First Name</label>
               <Field type="text" id="firstName" name="firstName" />
-              <ErrorMessage name="firstName" component={ErrorValid} />
             </div>
-
             <div>
               <label htmlFor="lastName">Last Name</label>
               <Field type="text" id="lastName" name="lastName" />
-              <ErrorMessage name="lastName" component={ErrorValid} />
             </div>
-
             <div>
               <label htmlFor="email">Email</label>
               <Field type="email" id="email" name="email" />
-              <ErrorMessage name="email" component={ErrorValid} />
             </div>
-
             <div>
               <label htmlFor="phoneNumber">Phone Number</label>
               <Field type="tel" id="phoneNumber" name="phoneNumber" />
-              <ErrorMessage name="phoneNumber" component={ErrorValid} />
             </div>
-
             <div>
               <label htmlFor="age">Age</label>
               <Field type="text" id="age" name="age" />
-              <ErrorMessage name="age" component={ErrorValid} />
             </div>
-
+            <ErrorMessage name="age" component={ErrorValid} />
             <div className="formik-buttons">
               <button onClick={() => navigate('/catalog')}>Back to Catalog</button>
               <button className='cart-buttons-last-button' type="submit" disabled={isSubmitting}>
