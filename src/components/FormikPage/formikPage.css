@@ -23,3 +23,30 @@
   display: flex;
   justify-content: space-between;
 }
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: center;
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 270px;
+  padding: 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
+  border: 2px solid #000;
+  border-radius: 5px;
+  display: block;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+  border-color: #000; 
+  outline: none;
+}
