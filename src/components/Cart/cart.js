@@ -47,6 +47,10 @@ const Cart = () => {
     }
   };
 
+  const handleFormikPageClick = (itemId) => {
+    navigate(`/formik`);
+  };
+
   return (
     <div className="cart">
       <h2>Shopping Cart</h2>
@@ -72,7 +76,7 @@ const Cart = () => {
         <button onClick={handleBackToCatalog}>Back to Catalog</button>
         <button onClick={handleClearAllItems}>Clear All</button>
         </div>
-        <button className='cart-buttons-last-button'>Continue</button>
+        <button className='cart-buttons-last-button' onClick={handleFormikPageClick}>Continue</button>
       </div>
     </div>
   );
