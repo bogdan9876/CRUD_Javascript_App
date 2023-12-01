@@ -2,11 +2,14 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import './formikPage.css';
+import { useDispatch } from 'react-redux';
+import { removeAllItemsFromCart } from '../../redux/cartActions';
 import ErrorValid from '../ErrorValid/errorValid';
+import './formikPage.css';
 
 const FormikPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const initialValues = {
     firstName: '',
@@ -32,9 +35,10 @@ const FormikPage = () => {
   const handleSubmit = (values, actions) => {
     console.log('Form submitted!', values);
     actions.setSubmitting(false);
+    dispatch(removeAllItemsFromCart());
     navigate('/success');
   };
-
+  
   return (
     <div>
       <h2 className='checkout'>Checkout</h2>

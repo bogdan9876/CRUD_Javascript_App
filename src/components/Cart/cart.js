@@ -47,7 +47,7 @@ const Cart = () => {
     }
   };
 
-  const handleFormikPageClick = (itemId) => {
+  const handleFormikPageClick = () => {
     navigate(`/formik`);
   };
 
