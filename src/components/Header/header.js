@@ -1,7 +1,18 @@
 import './header.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Header({ searchTerm, onSearchChange }) {
+    const navigate = useNavigate();
+
+    const handleSignOut = () => {
+        const confirmed = window.confirm('Are you sure you want to sign out?');
+
+        if (confirmed) {
+            localStorage.removeItem('user');
+            navigate('/');
+        }
+    };
+
     return (
         <header className="header">
             <div className="header__nav">
@@ -25,7 +36,11 @@ function Header({ searchTerm, onSearchChange }) {
                         </button>
                     </NavLink>
                 </div>
-                <input type="search" className="header__search" placeholder="Search" value={searchTerm} onChange={onSearchChange}/></div>
+                <button type="button" className="header__sign-out" onClick={handleSignOut}>
+                    Sign me out
+                </button>
+                <input type="search" className="header__search" placeholder="Search" value={searchTerm} onChange={onSearchChange} />
+            </div>
         </header>
     );
 }
