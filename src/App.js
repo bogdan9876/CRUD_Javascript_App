@@ -9,28 +9,35 @@ import LampDetail from './components/LampDetail/lampDetail';
 import Cart from './components/Cart/cart';
 import FormikPage from './components/FormikPage/formikPage';
 import SuccessPage from './components/SuccessPage/successPage';
+import ProtectedRoute from './utils/ProtectedRoute';
+import Login from './components/Login/login';
+import Register from './components/Register/register';
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
 
-  return (
-    <Router>
-      <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/catalog" element={<Catalog searchTerm={searchTerm} />} />
-        <Route path="/lamp/:id" element={<LampDetail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/formik" element={<FormikPage /> } />
-        <Route path="/success" element={<SuccessPage /> } />
-      </Routes>
-      <Footer />
-    </Router>
-  );
+    return (
+        <Router>
+            <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />
+            <Routes>
+                <Route element={<ProtectedRoute />}>
+                <Route path="/home" element={<Home/>} />
+                <Route path="/catalog" element={<Catalog/>} searchTerm={searchTerm} />
+                <Route path="/lamp/:id" element={<LampDetail/>} />
+                <Route path="/cart" element={<Cart/>} />
+                <Route path="/formik" element={<FormikPage/>} />
+                <Route path="/success" element={<SuccessPage/>} />
+                </Route>
+                <Route element={<Login />} path="/" exact/>
+                <Route element={<Register />} path="/register" />
+            </Routes>
+            <Footer />
+        </Router>
+    );
 }
 
 export default App;
