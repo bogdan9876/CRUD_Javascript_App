@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 import Header from './components/Header/header';
 import Footer from './components/Footer/footer';
@@ -14,15 +14,24 @@ import Login from './components/Login/login';
 import Register from './components/Register/register';
 
 function App() {
+    return (
+        <Router>
+            <AppContent />
+        </Router>
+    );
+}
+
+function AppContent() {
     const [searchTerm, setSearchTerm] = useState('');
+    const location = useLocation();
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
     return (
-        <Router>
-            <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />
+        <>
+            {location.pathname !== '/' && location.pathname !== '/register' && <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />}
             <Routes>
                 <Route element={<ProtectedRoute />}>
                     <Route path="/home" element={<Home />} />
@@ -36,7 +45,7 @@ function App() {
                 <Route element={<Register />} path="/register" />
             </Routes>
             <Footer />
-        </Router>
+        </>
     );
 }
 
