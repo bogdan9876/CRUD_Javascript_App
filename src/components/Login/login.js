@@ -7,7 +7,10 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    if (email === 'user@example.com' && password === 'password') {
+    const registeredUser = localStorage.getItem('registeredUser');
+    const registeredPassword = localStorage.getItem('registeredPassword');
+
+    if (email === registeredUser && password === registeredPassword) {
       localStorage.setItem('loggedInUser', email);
       navigate('/home');
     } else {
@@ -21,6 +24,7 @@ const Login = () => {
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <button onClick={handleLogin}>Login</button>
+      <p>Don't have an account? <span onClick={() => navigate('/register')}>Register</span></p>
     </div>
   );
 };
