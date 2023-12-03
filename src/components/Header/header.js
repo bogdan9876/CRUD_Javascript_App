@@ -6,13 +6,13 @@ function Header({ searchTerm, onSearchChange }) {
 
     const handleSignOut = () => {
         const confirmed = window.confirm('Are you sure you want to sign out?');
-
+        
         if (confirmed) {
-            localStorage.removeItem('user');
+            localStorage.removeItem('loggedInUser');
             navigate('/');
         }
     };
-
+    
     return (
         <header className="header">
             <div className="header__nav">
