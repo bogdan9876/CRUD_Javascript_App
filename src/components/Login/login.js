@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import ErrorValid from '../ErrorValid/errorValid';
 import './login.css';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const validateEmail = (input) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(input);
+  const initialValues = {
+    email: '',
+    password: '',
   };
 
-  const handleLogin = () => {
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    password: Yup.string().required('Password is required'),
+  });
+
+  const handleLogin = (values) => {
     const registeredUser = localStorage.getItem('registeredUser');
     const registeredPassword = localStorage.getItem('registeredPassword');
 
-    if (validateEmail(email) && email === registeredUser && password === registeredPassword) {
-      localStorage.setItem('loggedInUser', email);
+    if (values.email === registeredUser && values.password === registeredPassword) {
+      localStorage.setItem('loggedInUser', values.email);
       navigate('/home');
     } else {
       alert('Invalid credentials');
@@ -27,11 +33,19 @@ const Login = () => {
   return (
     <div className="login-container">
       <h2>Login</h2>
-      <div className="input-container">
-        <input className="login-input" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input className="login-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </div>
-      <button className="login-button" onClick={handleLogin}>Login</button>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleLogin}
+      >
+        <Form className="input-container">
+          <Field className="login-input" type="text" name="email" placeholder="Email" />
+          <ErrorMessage name="email" component={ErrorValid} />
+          <Field className="login-input" type="password" name="password" placeholder="Password" />
+          <ErrorMessage name="password" component={ErrorValid} />
+          <button className="login-button" type="submit">Login</button>
+        </Form>
+      </Formik>
       <p className='login-text'>Not a member? <span onClick={() => navigate('/register')}>Register</span></p>
     </div>
   );
