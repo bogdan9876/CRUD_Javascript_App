@@ -27,7 +27,7 @@ const Register = () => {
   const handleRegister = (values) => {
     localStorage.setItem('registeredUser', values.email);
     localStorage.setItem('registeredPassword', values.password);
-    navigate('/home');
+    navigate('/login');
   };
 
   return (

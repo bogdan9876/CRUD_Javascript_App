@@ -9,7 +9,7 @@ function Header({ searchTerm, onSearchChange }) {
         
         if (confirmed) {
             localStorage.removeItem('loggedInUser');
-            navigate('/');
+            navigate('/login');
         }
     };
     
@@ -20,7 +20,7 @@ function Header({ searchTerm, onSearchChange }) {
                     <img src="logos/logo.png" alt="logo" width="70" height="70" />
                 </div>
                 <div className="header__nav-pages">
-                    <NavLink exact to="/home">
+                    <NavLink exact to="/">
                         <button type="button" className="header__page">
                             Home
                         </button>

@@ -31,17 +31,17 @@ function AppContent() {
 
     return (
         <>
-            {location.pathname !== '/' && location.pathname !== '/register' && <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />}
+            {location.pathname !== '/login' && location.pathname !== '/register' && <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />}
             <Routes>
                 <Route element={<ProtectedRoute />}>
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/catalog" element={<Catalog />} searchTerm={searchTerm} />
                     <Route path="/lamp/:id" element={<LampDetail />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/formik" element={<FormikPage />} />
                     <Route path="/success" element={<SuccessPage />} />
                 </Route>
-                <Route element={<Login />} path="/" exact />
+                <Route element={<Login />} path="/login" exact />
                 <Route element={<Register />} path="/register" />
             </Routes>
             <Footer />

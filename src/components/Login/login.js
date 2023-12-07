@@ -24,7 +24,7 @@ const Login = () => {
 
     if (values.email === registeredUser && values.password === registeredPassword) {
       localStorage.setItem('loggedInUser', values.email);
-      navigate('/home');
+      navigate('/');
     } else {
       alert('Invalid credentials');
     }
