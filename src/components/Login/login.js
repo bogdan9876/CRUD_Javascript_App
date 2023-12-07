@@ -27,7 +27,7 @@ const Login = () => {
         <input className="login-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
       </div>
       <button className="login-button" onClick={handleLogin}>Login</button>
-      <p>Don't have an account? <span onClick={() => navigate('/register')}>Register</span></p>
+      <p className='login-text'>Not a member? <span onClick={() => navigate('/register')}>Register</span></p>
     </div>
   );
 };

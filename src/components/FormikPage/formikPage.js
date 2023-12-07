@@ -75,9 +75,9 @@ const FormikPage = () => {
               <Field type="text" id="age" name="age" className={styles.input} />
               <ErrorMessage name="age" component={ErrorValid} />
             </div>
-            <div className={styles.formikButtons}>
+            <div className="formik-buttons">
               <button onClick={() => navigate('/catalog')}>Back to Catalog</button>
-              <button className={styles.cartButtonsLastButton} type="submit" disabled={isSubmitting}>
+              <button className='cart-buttons-last-button' type="submit" disabled={isSubmitting}>
                 Continue
               </button>
             </div>
