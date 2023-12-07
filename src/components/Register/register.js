@@ -16,10 +16,12 @@ const Register = () => {
   return (
     <div className="register-container">
       <h2>Register</h2>
+      <div className='register-container2'>
       <input className="register-input" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
       <input className="register-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+      </div>
       <button className="register-button" onClick={handleRegister}>Register</button>
-      <p>Already have an account? <span onClick={() => navigate('/')}>Login</span></p>
+      <p className='register-text'>Already a member? <span onClick={() => navigate('/')}>Login</span></p>
     </div>
   );
 };
