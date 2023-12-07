@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeAllItemsFromCart } from '../../redux/cartActions';
 import ErrorValid from '../ErrorValid/errorValid';
+import styles from './formikPage.module.css';
 import './formikPage.css';
 
 const FormikPage = () => {
@@ -38,7 +39,7 @@ const FormikPage = () => {
     dispatch(removeAllItemsFromCart());
     navigate('/success');
   };
-  
+
   return (
     <div>
       <h2 className='checkout'>Checkout</h2>
@@ -51,32 +52,32 @@ const FormikPage = () => {
           <Form>
             <div>
               <label htmlFor="firstName">First Name</label>
-              <Field type="text" id="firstName" name="firstName" />
+              <Field type="text" id="firstName" name="firstName" className={styles.input} />
               <ErrorMessage name="firstName" component={ErrorValid} />
             </div>
             <div>
               <label htmlFor="lastName">Last Name</label>
-              <Field type="text" id="lastName" name="lastName" />
+              <Field type="text" id="lastName" name="lastName" className={styles.input} />
               <ErrorMessage name="lastName" component={ErrorValid} />
             </div>
             <div>
               <label htmlFor="email">Email</label>
-              <Field type="email" id="email" name="email" />
+              <Field type="email" id="email" name="email" className={styles.input} />
               <ErrorMessage name="email" component={ErrorValid} />
             </div>
             <div>
               <label htmlFor="phoneNumber">Phone Number</label>
-              <Field type="tel" id="phoneNumber" name="phoneNumber" />
+              <Field type="tel" id="phoneNumber" name="phoneNumber" className={styles.input} />
               <ErrorMessage name="phoneNumber" component={ErrorValid} />
             </div>
             <div>
               <label htmlFor="age">Age</label>
-              <Field type="text" id="age" name="age" />
+              <Field type="text" id="age" name="age" className={styles.input} />
               <ErrorMessage name="age" component={ErrorValid} />
             </div>
-            <div className="formik-buttons">
+            <div className={styles.formikButtons}>
               <button onClick={() => navigate('/catalog')}>Back to Catalog</button>
-              <button className='cart-buttons-last-button' type="submit" disabled={isSubmitting}>
+              <button className={styles.cartButtonsLastButton} type="submit" disabled={isSubmitting}>
                 Continue
               </button>
             </div>
