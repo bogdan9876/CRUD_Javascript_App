@@ -11,6 +11,7 @@ function LampDetail() {
   const navigate = useNavigate();
   const [lamp, setLamp] = useState(null);
   const [color, setColor] = useState('');
+  const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const hasMounted = useRef(false);
   const dispatch = useDispatch();
@@ -55,8 +56,16 @@ function LampDetail() {
     setColor(event.target.value);
   };
 
+  const handleQuantityChange = (event) => {
+    setQuantity(parseInt(event.target.value));
+  };
+
   const handleAddToCart = () => {
-    dispatch(addToCart(lamp));
+    const lampWithQuantity = { ...lamp, quantity };
+    const lampsToAdd = Array.from({ length: quantity }, () => lampWithQuantity);
+    lampsToAdd.forEach((lamp) => {
+      dispatch(addToCart(lamp));
+    });
     navigate('/cart');
   };
 
@@ -82,6 +91,10 @@ function LampDetail() {
                 <option>Blue</option>
                 <option>Yellow</option>
               </select>
+            </div>
+            <div className="lamp-selector-container">
+              <h4>Select Quantity:</h4>
+              <input type="number" className="lamp-quantity-selector" min="1" value={quantity} onChange={handleQuantityChange}/>
             </div>
           </div>
         </div>

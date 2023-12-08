@@ -30,7 +30,8 @@ const FormikPage = () => {
     age: Yup.number()
       .typeError('Age must be a number')
       .integer('Age must be an integer')
-      .required('Age is required'),
+      .required('Age is required')
+      .min(17, 'Age must be greater than 16'),
   });
 
   const handleSubmit = (values, actions) => {

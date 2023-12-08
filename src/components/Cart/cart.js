@@ -54,6 +54,8 @@ const Cart = () => {
   return (
     <div className="cart">
       <h2>Shopping Cart</h2>
+      {cartItems.length > 0 && (
+        <>
       <ul className="cart-items">
         {cartItems.map((item) => (
           <li key={item.id} className="cart-item">
@@ -78,6 +80,8 @@ const Cart = () => {
         </div>
         <button className='cart-buttons-last-button' onClick={handleFormikPageClick}>Continue</button>
       </div>
+        </>
+      )}
     </div>
   );
 };

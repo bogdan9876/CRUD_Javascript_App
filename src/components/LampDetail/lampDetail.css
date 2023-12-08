@@ -138,3 +138,15 @@
   cursor: pointer;
   width: 150px;
 }
+
+.lamp-quantity-selector {
+padding: 8px;
+font-size: 18px;
+border-radius: 5px;
+border: 1px solid#000000;
+outline: none;
+cursor: pointer;
+width: 170px;
+color: #666;
+font-size: 18px;
+}
