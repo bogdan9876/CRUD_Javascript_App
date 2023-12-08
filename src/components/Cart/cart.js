@@ -38,6 +38,13 @@ const Cart = () => {
     navigate(`/lamp/${itemId}`);
   };
 
+  const handleClearItem = (itemId) => {
+    const confirmed = window.confirm('Are you sure to remove this item from cart?');
+    if (confirmed) {
+      dispatch(removeFromCart(itemId));
+    }
+  };
+
   const handleClearAllItems = () => {
     const confirmed = window.confirm('Are you sure to remove all items from cart?');
     if (confirmed) {
@@ -66,6 +73,7 @@ const Cart = () => {
               <p className='cart-item-quantity'>{item.quantity}</p>
               <button onClick={() => handleIncrementQuantity(item.id)}>+</button>
               <p className='cart-item-price'>{item.price * item.quantity} uah</p>
+              <button onClick={() => handleClearItem(item.id)}>Clear</button>
             </div>
           </li>
         ))}
