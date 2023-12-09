@@ -26,3 +26,27 @@
 Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab6)
 
 ***
+### Лабораторна робота №7 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab7)
+
+***
+### Лабораторна робота №8 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab8)
+
+***
+### Лабораторна робота №9 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab9)
+
+***
+### Лабораторна робота №10 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab10)
+
+***
+### Лабораторна робота №11 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab11)
+
+***
+### Лабораторна робота №12 (Варіант 12)
+Посилання на вітку [тут](https://github.com/bogdan9876/WEB_labs/tree/lab12test)
+
+***
